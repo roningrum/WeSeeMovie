@@ -2,5 +2,10 @@
     <string name="app_name">WeSeeMovie</string>
     <string name="movie">Movie</string>
     <string name="tv_series">TV Series</string>
+    <string name="release">release</string>
+    <string name="director">director</string>
+    <string name="genre">genre</string>
+    <string name="movie_banner">movie_banner</string>
+    <string name="synopsis">Synopsis</string>
 
 </resources>
