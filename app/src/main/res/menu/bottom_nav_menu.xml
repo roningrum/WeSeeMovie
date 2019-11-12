@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/navigation_movie"
+        android:id="@+id/nav_movie_menu"
         android:enabled="true"
         android:icon="@drawable/ic_movie"
         android:title="@string/movie"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/navigation_tv"
+        android:id="@+id/nav_tv_menu"
         android:enabled="true"
         android:icon="@drawable/ic_tv"
         android:title="@string/tv_series"

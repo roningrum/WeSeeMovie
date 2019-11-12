@@ -1,15 +1,6 @@
 <resources>
     <string name="app_name">WeSeeMovie</string>
-    <string name="release">Release</string>
-    <string name="director">Director</string>
-    <string name="genre">Genre</string>
-    <string name="synopsis">Synopsis</string>
-    <string name="rate">Rate</string>
     <string name="movie">Movie</string>
     <string name="tv_series">TV Series</string>
-    <string name="content_tvshow_backdrop">TvShow BackDrop</string>
-    <string name="creator">Creator</string>
-    <string name="change_language">Change Language</string>
-    <string name="movie_banner">Movie Banner</string>
 
 </resources>
