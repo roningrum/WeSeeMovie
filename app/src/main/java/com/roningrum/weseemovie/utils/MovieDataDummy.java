@@ -11,6 +11,7 @@ public class MovieDataDummy {
         movies.add(new Movie(
                 "A Star is Born(2018)",
                 "Drama,Romance, Music",
+                "October 5th 2018",
                 "2h 15m",
                 "Seasoned musician Jackson Maine discovers  and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even as Ally\\'s career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons",
                 "Bradley Cooper",
@@ -20,6 +21,7 @@ public class MovieDataDummy {
         movies.add(new Movie(
                 "Alita: Battle Angel(2019)",
                 "Action,Science Fiction,\\nThriller, Adventure",
+                "January 31st 2019",
                 "2h 2m",
                 "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
                 "Robert Rodriguez",
@@ -29,6 +31,7 @@ public class MovieDataDummy {
         movies.add(new Movie(
                 "Aquaman(2018)",
                 "Action, Adventure, Fantasy",
+                "December 7th 2018",
                 "2h 24m",
                 "Once home to the most advanced civilization on Earth, Atlantis is now an underwater kingdom ruled by the power-hungry King Orm. With a vast army at his disposal, Orm plans to conquer the remaining oceanic people and then the surface world. Standing in his way is Arthur Curry, Orm\'s half-human, half-Atlantean brother and true heir to the throne.",
                 "James Wan",
@@ -38,6 +41,7 @@ public class MovieDataDummy {
         movies.add(new Movie(
                 "Avengers: Infinity Wars(2018)",
                 "Action, Adventure,\\nScience Fiction",
+                "April 23rd 2018",
                 "2h 29m",
                 "As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.",
                 "Antonie Russo &amp; \\n Joe Russo",

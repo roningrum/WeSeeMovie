@@ -21,6 +21,10 @@ public class TVListFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static Fragment newInstance() {
+        return new TVListFragment();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

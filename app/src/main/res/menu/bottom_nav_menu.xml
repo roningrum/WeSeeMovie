@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/nav_movie_menu"
-        android:enabled="true"
+        android:checked="true"
         android:icon="@drawable/ic_movie"
-        android:title="@string/movie"
-        app:showAsAction="ifRoom" />
+        android:title="@string/movie" />
 
     <item
         android:id="@+id/nav_tv_menu"
-        android:enabled="true"
         android:icon="@drawable/ic_tv"
-        android:title="@string/tv_series"
-        app:showAsAction="ifRoom" />
+        android:title="@string/tv_series" />
 
 </menu>
