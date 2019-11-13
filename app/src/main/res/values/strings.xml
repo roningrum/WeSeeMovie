@@ -7,5 +7,6 @@
     <string name="genre">genre</string>
     <string name="movie_banner">movie_banner</string>
     <string name="synopsis">Synopsis</string>
+    <string name="poster">poster</string>
 
 </resources>
