@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.roningrum.weseemovie.R;
 import com.roningrum.weseemovie.data.Movie;
 import com.roningrum.weseemovie.utils.GlideApp;
-import com.roningrum.weseemovie.utils.MoviePosterView;
 
 public class DetailMovieActivity extends AppCompatActivity {
     public static final String EXTRA_FILMS = "extra_movies";
@@ -20,7 +19,7 @@ public class DetailMovieActivity extends AppCompatActivity {
     private TextView tvReleaseDateMoviesDetail;
     private TextView tvDirectorMoviesDetail;
     private TextView tvSynopsisMoviesDetail;
-    private MoviePosterView imgPosterDetail;
+    private ImageView imgPosterDetail;
     private ImageView imgBannerDetail;
 
 

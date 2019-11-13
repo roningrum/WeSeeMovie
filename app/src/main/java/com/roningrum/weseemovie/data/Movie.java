@@ -6,6 +6,9 @@ import android.os.Parcelable;
 public class Movie implements Parcelable {
     private String name;
     private String genre;
+    private String duration;
+    private String synopsis;
+    private String creator;
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
         @Override
         public Movie createFromParcel(Parcel in) {
@@ -17,20 +20,18 @@ public class Movie implements Parcelable {
             return new Movie[size];
         }
     };
-    private String duration;
-    private String synopsis;
-    private String creator;
     private int PhotoBanner;
     private int Poster;
     private String date;
 
-    public Movie(String name, String genre, String date, String duration, String synopsis, String creator, int photoBanner, int poster) {
+
+    public Movie(String name, String genre, String duration, String synopsis, String creator, String date, int photoBanner, int poster) {
         this.name = name;
         this.genre = genre;
-        this.date = date;
         this.duration = duration;
         this.synopsis = synopsis;
         this.creator = creator;
+        this.date = date;
         PhotoBanner = photoBanner;
         Poster = poster;
     }
@@ -41,8 +42,8 @@ public class Movie implements Parcelable {
         duration = in.readString();
         synopsis = in.readString();
         creator = in.readString();
-        PhotoBanner = in.readInt();
         date = in.readString();
+        PhotoBanner = in.readInt();
         Poster = in.readInt();
     }
 
@@ -86,6 +87,14 @@ public class Movie implements Parcelable {
         this.creator = creator;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public int getPhotoBanner() {
         return PhotoBanner;
     }
@@ -100,14 +109,6 @@ public class Movie implements Parcelable {
 
     public void setPoster(int poster) {
         Poster = poster;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     @Override
