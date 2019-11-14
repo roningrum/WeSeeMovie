@@ -47,8 +47,8 @@ public class DetailMovieActivity extends AppCompatActivity {
 
     private void showDetailMovie() {
         Movie movie = getIntent().getParcelableExtra(EXTRA_FILMS);
-        detailMovieViewModel.setMovie(movie);
         if (movie != null) {
+            detailMovieViewModel.setMovie(movie);
             Movie movieData = detailMovieViewModel.getMovie();
             tvNameMoviesDetail.setText(movieData.getName());
             tvDurationMoviesDetail.setText(movieData.getDuration());
