@@ -9,17 +9,6 @@ public class Movie implements Parcelable {
     private String duration;
     private String synopsis;
     private String creator;
-    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
-        @Override
-        public Movie createFromParcel(Parcel in) {
-            return new Movie(in);
-        }
-
-        @Override
-        public Movie[] newArray(int size) {
-            return new Movie[size];
-        }
-    };
     private int PhotoBanner;
     private int Poster;
     private String date;
@@ -127,4 +116,16 @@ public class Movie implements Parcelable {
         dest.writeInt(PhotoBanner);
         dest.writeInt(Poster);
     }
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 }
