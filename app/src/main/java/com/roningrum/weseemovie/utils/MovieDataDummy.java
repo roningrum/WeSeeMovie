@@ -11,10 +11,10 @@ public class MovieDataDummy {
         movies.add(new Movie(
                 "A Star is Born(2018)",
                 "Drama,Romance, Music",
-                "October 5th 2018",
+                "2h 15m",
                 "Seasoned musician Jackson Maine discovers  and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even as Ally\\'s career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons",
                 "Bradley Cooper",
-                "2h 15m",
+                "October 5th 2018",
                 R.drawable.banner_movie_astarisborn,
                 R.drawable.poster_a_start_is_born
         ));
