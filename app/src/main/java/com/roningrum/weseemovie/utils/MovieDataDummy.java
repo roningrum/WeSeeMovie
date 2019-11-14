@@ -40,9 +40,4 @@ public class MovieDataDummy {
         }
         return null;
     }
-
-//    public static ArrayList<Movie> generateDummyTvs() {
-//        ArrayList<Movie> tvs = new ArrayList<>();
-//        return tvs;
-//    }
 }
