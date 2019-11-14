@@ -1,5 +1,6 @@
 package com.roningrum.weseemovie.ui.movie;
 
+import androidx.test.espresso.Espresso;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.rule.ActivityTestRule;
 
@@ -26,6 +27,7 @@ public class MovieTest {
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
         onView(withId(R.id.tv_name_movie_detail)).check(matches(isDisplayed()));
         onView(withId(R.id.tv_name_movie_detail)).check(matches(withText("Alita: Battle Angel(2019)")));
+        Espresso.pressBack();
     }
 
 }

@@ -16,7 +16,6 @@
         app:elevation="0dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapse_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
@@ -36,7 +35,6 @@
                 tools:srcCompat="@android:color/darker_gray" />
 
             <View
-                android:id="@+id/view_backdrop_detail"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@drawable/bg_poster_banner" />

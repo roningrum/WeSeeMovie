@@ -14,6 +14,8 @@ import com.roningrum.weseemovie.R;
 import com.roningrum.weseemovie.data.Movie;
 import com.roningrum.weseemovie.utils.GlideApp;
 
+import java.util.Objects;
+
 public class DetailMovieActivity extends AppCompatActivity {
     public static final String EXTRA_FILMS = "extra_movies";
     private DetailMovieViewModel detailMovieViewModel;
@@ -47,6 +49,10 @@ public class DetailMovieActivity extends AppCompatActivity {
 
         appBarLayout = findViewById(R.id.appBar);
         toolbar = findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         detailMovieViewModel = ViewModelProviders.of(this).get(DetailMovieViewModel.class);

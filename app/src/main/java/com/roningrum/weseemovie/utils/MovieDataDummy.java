@@ -43,7 +43,7 @@ public class MovieDataDummy {
                 "Action, Adventure,\nScience Fiction",
                 "2h 29m",
                 "As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain",
-                "Antonie Russo &amp; \n Joe Russo",
+                "Antonie Russo &\n Joe Russo",
                 "April 23rd 2018",
                 R.drawable.banner_movie_avengers,
                 R.drawable.poster_infinity_war
@@ -110,7 +110,7 @@ public class MovieDataDummy {
         ));
         movies.add(new Movie(
                 "Spider-Man: Into the Verse(2018)",
-                "Action, Adventure,\nAnimation, Science Fiction,\nComedy",
+                "Action, Adventure,Animation,\nScience Fiction,\nComedy",
                 "1h 57m",
                 "Miles Morales is juggling his life between being a high school student and being a spider-man. When Wilson \"Kingpin\" Fisk uses a super collider, others from across the Spider-Verse are transported to this dimension.",
                 "Rodney Rothman",
