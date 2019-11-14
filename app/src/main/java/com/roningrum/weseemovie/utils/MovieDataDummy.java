@@ -28,6 +28,96 @@ public class MovieDataDummy {
                 R.drawable.banner_movie_alita,
                 R.drawable.poster_alita
         ));
+        movies.add(new Movie(
+                "Alita: Battle Angel(2019)",
+                "Action,Science Fiction, \nThriller, Adventure",
+                "2h 2m",
+                "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+                "Robert Rodriguez",
+                "January 31st 2019",
+                R.drawable.banner_movie_alita,
+                R.drawable.poster_alita
+        ));
+        movies.add(new Movie(
+                "Alita: Battle Angel(2019)",
+                "Action,Science Fiction, \nThriller, Adventure",
+                "2h 2m",
+                "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+                "Robert Rodriguez",
+                "January 31st 2019",
+                R.drawable.banner_movie_alita,
+                R.drawable.poster_alita
+        ));
+        movies.add(new Movie(
+                "Alita: Battle Angel(2019)",
+                "Action,Science Fiction, \nThriller, Adventure",
+                "2h 2m",
+                "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+                "Robert Rodriguez",
+                "January 31st 2019",
+                R.drawable.banner_movie_alita,
+                R.drawable.poster_alita
+        ));
+        movies.add(new Movie(
+                "Alita: Battle Angel(2019)",
+                "Action,Science Fiction, \nThriller, Adventure",
+                "2h 2m",
+                "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+                "Robert Rodriguez",
+                "January 31st 2019",
+                R.drawable.banner_movie_alita,
+                R.drawable.poster_alita
+        ));
+        movies.add(new Movie(
+                "Alita: Battle Angel(2019)",
+                "Action,Science Fiction, \nThriller, Adventure",
+                "2h 2m",
+                "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+                "Robert Rodriguez",
+                "January 31st 2019",
+                R.drawable.banner_movie_alita,
+                R.drawable.poster_alita
+        ));
+        movies.add(new Movie(
+                "Alita: Battle Angel(2019)",
+                "Action,Science Fiction, \nThriller, Adventure",
+                "2h 2m",
+                "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+                "Robert Rodriguez",
+                "January 31st 2019",
+                R.drawable.banner_movie_alita,
+                R.drawable.poster_alita
+        ));
+        movies.add(new Movie(
+                "Alita: Battle Angel(2019)",
+                "Action,Science Fiction, \nThriller, Adventure",
+                "2h 2m",
+                "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+                "Robert Rodriguez",
+                "January 31st 2019",
+                R.drawable.banner_movie_alita,
+                R.drawable.poster_alita
+        ));
+        movies.add(new Movie(
+                "Alita: Battle Angel(2019)",
+                "Action,Science Fiction, \nThriller, Adventure",
+                "2h 2m",
+                "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+                "Robert Rodriguez",
+                "January 31st 2019",
+                R.drawable.banner_movie_alita,
+                R.drawable.poster_alita
+        ));
+        movies.add(new Movie(
+                "Alita: Battle Angel(2019)",
+                "Action,Science Fiction, \nThriller, Adventure",
+                "2h 2m",
+                "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+                "Robert Rodriguez",
+                "January 31st 2019",
+                R.drawable.banner_movie_alita,
+                R.drawable.poster_alita
+        ));
         return movies;
     }
 
