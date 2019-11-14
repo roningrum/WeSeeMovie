@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.roningrum.weseemovie.R;
 import com.roningrum.weseemovie.data.Movie;
-import com.roningrum.weseemovie.utils.MovieDataDummy;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class MovieListFragment extends Fragment {
     private RecyclerView rvMovies;
-//    private ProgressBar progressBar;
+    //    private ProgressBar progressBar;
 
 
     public MovieListFragment() {
@@ -52,8 +52,9 @@ public class MovieListFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (getActivity() != null) {
+            MovieViewModel movieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
+            List<Movie> movies = movieViewModel.getAllMovies();
 
-            List<Movie> movies = MovieDataDummy.generateDummyMovies();
             MovieAdapter movieAdapter = new MovieAdapter(getActivity());
             movieAdapter.setMovies(movies);
 
