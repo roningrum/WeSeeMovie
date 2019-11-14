@@ -40,25 +40,26 @@ public class DetailMovieActivity extends AppCompatActivity {
         tvDurationMoviesDetail = findViewById(R.id.tv_duration_movie_item);
 
         detailMovieViewModel = ViewModelProviders.of(this).get(DetailMovieViewModel.class);
-        Movie movie = getIntent().getParcelableExtra(EXTRA_FILMS);
-        if (movie != null) {
-            detailMovieViewModel.setMovie(movie);
-            showDetailMovie();
-        }
+        showDetailMovie();
 
 
     }
 
     private void showDetailMovie() {
-        Movie movieData = detailMovieViewModel.getMovie();
-        tvNameMoviesDetail.setText(movieData.getName());
-        tvDurationMoviesDetail.setText(movieData.getDuration());
-        tvGenreMoviesDetail.setText(movieData.getGenre());
-        tvReleaseDateMoviesDetail.setText(movieData.getDate());
-        tvDirectorMoviesDetail.setText(movieData.getCreator());
-        tvSynopsisMoviesDetail.setText(movieData.getSynopsis());
+        Movie movie = getIntent().getParcelableExtra(EXTRA_FILMS);
+        detailMovieViewModel.setMovie(movie);
+        if (movie != null) {
+            Movie movieData = detailMovieViewModel.getMovie();
+            tvNameMoviesDetail.setText(movieData.getName());
+            tvDurationMoviesDetail.setText(movieData.getDuration());
+            tvGenreMoviesDetail.setText(movieData.getGenre());
+            tvReleaseDateMoviesDetail.setText(movieData.getDate());
+            tvDirectorMoviesDetail.setText(movieData.getCreator());
+            tvSynopsisMoviesDetail.setText(movieData.getSynopsis());
 
-        GlideApp.with(getApplicationContext()).load(movieData.getPoster()).into(imgPosterDetail);
-        GlideApp.with(getApplicationContext()).load(movieData.getPhotoBanner()).into(imgBannerDetail);
+            GlideApp.with(getApplicationContext()).load(movieData.getPoster()).into(imgPosterDetail);
+            GlideApp.with(getApplicationContext()).load(movieData.getPhotoBanner()).into(imgBannerDetail);
+        }
+
     }
 }

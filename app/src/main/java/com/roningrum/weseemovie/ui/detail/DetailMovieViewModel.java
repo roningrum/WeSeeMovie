@@ -9,7 +9,9 @@ public class DetailMovieViewModel extends ViewModel {
     private Movie movie;
 
     public Movie getMovie() {
-        movie = MovieDataDummy.getMovie();
+        for (int i = 0; i < MovieDataDummy.generateDummyMovies().size(); i++) {
+            movie = MovieDataDummy.generateDummyMovies().get(i);
+        }
         return movie;
     }
 
