@@ -22,7 +22,7 @@ public class MovieViewModelTest {
     public void getMovies() {
         List<Movie> movies = movieViewModel.getAllMovies();
         assertNotNull(movies);
-        assertEquals(2, movies.size());
+        assertEquals(11, movies.size());
     }
 
 }
