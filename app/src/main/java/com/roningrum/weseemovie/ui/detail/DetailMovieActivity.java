@@ -1,12 +1,15 @@
 package com.roningrum.weseemovie.ui.detail;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.roningrum.weseemovie.R;
 import com.roningrum.weseemovie.data.Movie;
 import com.roningrum.weseemovie.utils.GlideApp;
@@ -24,6 +27,9 @@ public class DetailMovieActivity extends AppCompatActivity {
     private ImageView imgPosterDetail;
     private ImageView imgBannerDetail;
 
+    private AppBarLayout appBarLayout;
+    private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,10 @@ public class DetailMovieActivity extends AppCompatActivity {
         tvSynopsisMoviesDetail = findViewById(R.id.tv_sinopsis_detail);
         tvDurationMoviesDetail = findViewById(R.id.tv_duration_movie_item);
 
+        appBarLayout = findViewById(R.id.appBar);
+        toolbar = findViewById(R.id.toolbar);
+
+
         detailMovieViewModel = ViewModelProviders.of(this).get(DetailMovieViewModel.class);
         showDetailMovie();
 
@@ -50,6 +60,26 @@ public class DetailMovieActivity extends AppCompatActivity {
         if (movie != null) {
             detailMovieViewModel.setMovie(movie);
             Movie movieData = detailMovieViewModel.getMovie();
+
+            appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+                boolean isVisible = true;
+                int scrollRange = -1;
+
+                @SuppressLint("ResourceAsColor")
+                @Override
+                public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                    if (scrollRange == -1) {
+                        scrollRange = appBarLayout.getTotalScrollRange();
+                    }
+                    if (scrollRange + verticalOffset == 0) {
+                        toolbar.setTitle(movieData.getName());
+                        isVisible = true;
+                    } else if (isVisible) {
+                        toolbar.setTitle("");
+                        isVisible = false;
+                    }
+                }
+            });
             tvNameMoviesDetail.setText(movieData.getName());
             tvDurationMoviesDetail.setText(movieData.getDuration());
             tvGenreMoviesDetail.setText(movieData.getGenre());

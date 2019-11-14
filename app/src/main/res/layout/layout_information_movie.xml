@@ -15,6 +15,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/release"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/colorText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +28,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="86dp"
         android:textStyle="bold"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/colorText"
         app:layout_constraintEnd_toStartOf="@+id/img_movie_poster_detail"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_release_time"
@@ -39,6 +43,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/director"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/colorText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_release_time" />
 
@@ -67,6 +73,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:textStyle="bold"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/colorText"
         app:layout_constraintEnd_toStartOf="@+id/img_movie_poster_detail"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_director"
@@ -80,6 +88,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/genre"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/colorText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_director" />
 
@@ -90,6 +100,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:textStyle="bold"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/colorText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_genre"
         tools:text="Drama" />
