@@ -24,9 +24,9 @@ public class MovieTest {
     @Test
     public void toDetailMovieActivity() {
         onView(withId(R.id.rv_movie)).check(matches(isDisplayed()));
-        onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
+        onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition(6, click()));
         onView(withId(R.id.tv_name_movie_detail)).check(matches(isDisplayed()));
-        onView(withId(R.id.tv_name_movie_detail)).check(matches(withText("Alita: Battle Angel(2019)")));
+        onView(withId(R.id.tv_name_movie_detail)).check(matches(withText("Glass(2019)")));
         Espresso.pressBack();
     }
 
