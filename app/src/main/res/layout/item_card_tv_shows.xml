@@ -43,6 +43,7 @@
             tools:text="Apple Show" />
 
         <TextView
+            android:id="@+id/tv_genre_tvshows_item"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="24dp"
