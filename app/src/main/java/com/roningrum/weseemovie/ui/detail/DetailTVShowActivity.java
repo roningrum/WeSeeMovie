@@ -19,7 +19,7 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailTVActivity extends AppCompatActivity {
+public class DetailTVShowActivity extends AppCompatActivity {
 
     public static final String EXTRA_TV = "tv";
     private DetailTVShowViewModel detailTVShowViewModel;

@@ -14,7 +14,7 @@
         android:largeHeap="true"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".ui.detail.DetailTVActivity"
+            android:name=".ui.detail.DetailTVShowActivity"
             android:parentActivityName=".ui.home.HomeMenuActivity" />
         <activity
             android:name=".ui.detail.DetailMovieActivity"
