@@ -8,5 +8,6 @@
     <string name="movie_banner">movie_banner</string>
     <string name="synopsis">Synopsis</string>
     <string name="poster">poster</string>
+    <string name="duration">Duration</string>
 
 </resources>
