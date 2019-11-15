@@ -4,17 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class TVShow implements Parcelable {
-    public static final Creator<TVShow> CREATOR = new Creator<TVShow>() {
-        @Override
-        public TVShow createFromParcel(Parcel in) {
-            return new TVShow(in);
-        }
-
-        @Override
-        public TVShow[] newArray(int size) {
-            return new TVShow[size];
-        }
-    };
     private String name;
     private String genre;
     private String duration;
@@ -42,6 +31,18 @@ public class TVShow implements Parcelable {
         PhotoBanner = in.readInt();
         Poster = in.readInt();
     }
+
+    public static final Creator<TVShow> CREATOR = new Creator<TVShow>() {
+        @Override
+        public TVShow createFromParcel(Parcel in) {
+            return new TVShow(in);
+        }
+
+        @Override
+        public TVShow[] newArray(int size) {
+            return new TVShow[size];
+        }
+    };
 
     public String getName() {
         return name;
