@@ -121,13 +121,4 @@ public class FakeMovieDataDummy {
         return movies;
     }
 
-    public static Movie getMovie() {
-        for (int i = 0; i < generateDummyMovies().size(); i++) {
-            Movie movie = generateDummyMovies().get(i);
-            if (movie != null) {
-                return movie;
-            }
-        }
-        return null;
-    }
 }

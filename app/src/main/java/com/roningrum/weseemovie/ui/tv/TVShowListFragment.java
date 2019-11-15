@@ -19,25 +19,29 @@ import com.roningrum.weseemovie.R;
 import com.roningrum.weseemovie.data.TVShow;
 
 import java.util.List;
+import java.util.Objects;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TVListFragment extends Fragment {
-    private RecyclerView rvTVshows;
+public class TVShowListFragment extends Fragment {
+    @BindView(R.id.rv_tv_show)
+    RecyclerView rvTVshows;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
 
-    public TVListFragment() {
+    public TVShowListFragment() {
         // Required empty public constructor
     }
 
-    public static Fragment newInstances() {
-        return new TVListFragment();
-    }
-
     public static Fragment newInstance() {
-        return new TVListFragment();
+        return new TVShowListFragment();
     }
 
 
@@ -51,11 +55,10 @@ public class TVListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        rvTVshows = view.findViewById(R.id.rv_tv_show);
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        ButterKnife.bind(this, view);
         toolbar.setTitle(R.string.tv_series);
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
     }
 
     @Override

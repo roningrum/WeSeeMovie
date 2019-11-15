@@ -19,19 +19,22 @@ import com.roningrum.weseemovie.utils.GlideApp;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
     private final Activity activity;
-    private List<Movie> movies = new ArrayList<>();
+    private final List<Movie> movies = new ArrayList<>();
 
-    public MovieAdapter(Activity activity) {
+    MovieAdapter(Activity activity) {
         this.activity = activity;
     }
 
-    public List<Movie> getMovies() {
+    private List<Movie> getMovies() {
         return movies;
     }
 
-    public void setMovies(List<Movie> movies) {
+    void setMovies(List<Movie> movies) {
         if (movies == null) return;
         this.movies.clear();
         this.movies.addAll(movies);
@@ -54,15 +57,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     class MovieViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.tv_name_movie_item)
         TextView tvNameMovieItem;
+        @BindView(R.id.tv_genre_movie_item)
         TextView tvGenreMovie;
+        @BindView(R.id.img_movie_item)
         ImageView imgMovieItem;
 
         MovieViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvNameMovieItem = itemView.findViewById(R.id.tv_name_movie_item);
-            tvGenreMovie = itemView.findViewById(R.id.tv_genre_movie_item);
-            imgMovieItem = itemView.findViewById(R.id.img_movie_item);
+            ButterKnife.bind(this, itemView);
         }
 
         void bindDataMovies(Movie movie) {

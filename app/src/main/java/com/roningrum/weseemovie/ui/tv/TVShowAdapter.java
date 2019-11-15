@@ -19,19 +19,22 @@ import com.roningrum.weseemovie.utils.GlideApp;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.TVShowHolder> {
     private final Activity activity;
-    private List<TVShow> tvShows = new ArrayList<>();
+    private final List<TVShow> tvShows = new ArrayList<>();
 
-    public TVShowAdapter(Activity activity) {
+    TVShowAdapter(Activity activity) {
         this.activity = activity;
     }
 
-    public List<TVShow> getTvShows() {
+    private List<TVShow> getTvShows() {
         return tvShows;
     }
 
-    public void setTvShows(List<TVShow> tvShows) {
+    void setTvShows(List<TVShow> tvShows) {
         if (tvShows == null) return;
         this.tvShows.clear();
         this.tvShows.addAll(tvShows);
@@ -54,15 +57,16 @@ public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.TVShowHold
     }
 
     class TVShowHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.tv_name_tvshows_item)
         TextView tvNameTVShows;
+        @BindView(R.id.tv_genre_tvshows_item)
         TextView tvGenreTVShows;
+        @BindView(R.id.img_tv_shows_item)
         ImageView imgTVShow;
 
-        public TVShowHolder(@NonNull View itemView) {
+        TVShowHolder(@NonNull View itemView) {
             super(itemView);
-            tvNameTVShows = itemView.findViewById(R.id.tv_name_tvshows_item);
-            tvGenreTVShows = itemView.findViewById(R.id.tv_genre_tvshows_item);
-            imgTVShow = itemView.findViewById(R.id.img_tv_shows_item);
+            ButterKnife.bind(this, itemView);
         }
 
         void bindDataTVShows(TVShow tvShow) {

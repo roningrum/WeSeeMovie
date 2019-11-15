@@ -18,8 +18,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 public class MovieListFragmentTest {
     @Rule
-    public ActivityTestRule<SingleFragmentActivity> activityRule = new ActivityTestRule<>(SingleFragmentActivity.class);
-    private MovieListFragment movieListFragment = new MovieListFragment();
+    public final ActivityTestRule<SingleFragmentActivity> activityRule = new ActivityTestRule<>(SingleFragmentActivity.class);
+    private final MovieListFragment movieListFragment = new MovieListFragment();
 
     @Before
     public void setUp() {

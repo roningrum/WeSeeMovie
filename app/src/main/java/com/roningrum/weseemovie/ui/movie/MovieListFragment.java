@@ -19,13 +19,20 @@ import com.roningrum.weseemovie.R;
 import com.roningrum.weseemovie.data.Movie;
 
 import java.util.List;
+import java.util.Objects;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MovieListFragment extends Fragment {
-    private RecyclerView rvMovies;
+    @BindView(R.id.rv_movie)
+    RecyclerView rvMovies;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     //    private ProgressBar progressBar;
 
 
@@ -47,11 +54,10 @@ public class MovieListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        rvMovies = view.findViewById(R.id.rv_movie);
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        ButterKnife.bind(this, view);
         toolbar.setTitle(R.string.movie);
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
 
     }
 
