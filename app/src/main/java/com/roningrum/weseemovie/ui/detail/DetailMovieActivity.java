@@ -16,39 +16,42 @@ import com.roningrum.weseemovie.utils.GlideApp;
 
 import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailMovieActivity extends AppCompatActivity {
     public static final String EXTRA_FILMS = "extra_movies";
     private DetailMovieViewModel detailMovieViewModel;
 
-    private TextView tvNameMoviesDetail;
-    private TextView tvGenreMoviesDetail;
-    private TextView tvDurationMoviesDetail;
-    private TextView tvReleaseDateMoviesDetail;
-    private TextView tvDirectorMoviesDetail;
-    private TextView tvSynopsisMoviesDetail;
-    private ImageView imgPosterDetail;
-    private ImageView imgBannerDetail;
+    @BindView(R.id.tv_name_movie_detail)
+    TextView tvNameMoviesDetail;
+    @BindView(R.id.tv_genre_movie_detail)
+    TextView tvGenreMoviesDetail;
+    @BindView(R.id.tv_duration_movie_item)
+    TextView tvDurationMoviesDetail;
+    @BindView(R.id.tv_release_time_detail)
+    TextView tvReleaseDateMoviesDetail;
+    @BindView(R.id.tv_director_detail)
+    TextView tvDirectorMoviesDetail;
+    @BindView(R.id.tv_sinopsis_detail)
+    TextView tvSynopsisMoviesDetail;
 
-    private AppBarLayout appBarLayout;
-    private Toolbar toolbar;
+    @BindView(R.id.img_movie_poster_detail)
+    ImageView imgPosterDetail;
+    @BindView(R.id.img_detail_photo_banner)
+    ImageView imgBannerDetail;
+
+    @BindView(R.id.appBar)
+    AppBarLayout appBarLayout;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_movie);
-
-        tvNameMoviesDetail = findViewById(R.id.tv_name_movie_detail);
-        tvGenreMoviesDetail = findViewById(R.id.tv_genre_movie_detail);
-        tvReleaseDateMoviesDetail = findViewById(R.id.tv_release_time_detail);
-        tvDirectorMoviesDetail = findViewById(R.id.tv_director_detail);
-        imgPosterDetail = findViewById(R.id.img_movie_poster_detail);
-        imgBannerDetail = findViewById(R.id.img_detail_photo_banner);
-        tvSynopsisMoviesDetail = findViewById(R.id.tv_sinopsis_detail);
-        tvDurationMoviesDetail = findViewById(R.id.tv_duration_movie_item);
-
-        appBarLayout = findViewById(R.id.appBar);
-        toolbar = findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
