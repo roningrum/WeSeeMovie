@@ -1,17 +1,28 @@
 package com.roningrum.weseemovie.ui.detail;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.roningrum.weseemovie.data.Movie;
+import com.roningrum.weseemovie.data.locale.entity.Movie;
+import com.roningrum.weseemovie.data.source.MovieRepository;
 
 public class DetailMovieViewModel extends ViewModel {
-    private Movie movie;
+    private int movieId;
+    private MovieRepository movieRepository;
 
-    public Movie getMovie() {
-        return this.movie;
+    public DetailMovieViewModel(MovieRepository mMovieRepository) {
+        this.movieRepository = mMovieRepository;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    LiveData<Movie> getMovieDetail(int movieId) {
+        return movieRepository.getMovieDetails(movieId);
+    }
+
+    public int getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
     }
 }

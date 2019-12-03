@@ -43,7 +43,7 @@
             tools:text="Apple Show" />
 
         <TextView
-            android:id="@+id/tv_genre_tvshows_item"
+            android:id="@+id/tv_overview_tv_item"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="24dp"
@@ -52,6 +52,9 @@
             android:padding="4dp"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp"
+            android:ellipsize="end"
+            android:lineSpacingExtra="4sp"
+            android:maxLines="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

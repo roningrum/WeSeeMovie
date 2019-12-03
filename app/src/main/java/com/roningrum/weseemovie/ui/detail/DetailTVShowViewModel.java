@@ -1,17 +1,28 @@
 package com.roningrum.weseemovie.ui.detail;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.roningrum.weseemovie.data.TVShow;
+import com.roningrum.weseemovie.data.locale.entity.TVShow;
+import com.roningrum.weseemovie.data.source.MovieRepository;
 
 public class DetailTVShowViewModel extends ViewModel {
-    private TVShow tvShow;
+    private int tvId;
+    private MovieRepository movieRepository;
 
-    public TVShow getTvShow() {
-        return this.tvShow;
+    public DetailTVShowViewModel(MovieRepository mMovieRepository) {
+        this.movieRepository = mMovieRepository;
     }
 
-    public void setTvShow(TVShow tvShow) {
-        this.tvShow = tvShow;
+    public LiveData<TVShow> getTvShowDetail(int tvId) {
+        return movieRepository.getTvShowDetails(tvId);
+    }
+
+    public int getTvId() {
+        return tvId;
+    }
+
+    public void setTvId(int tvId) {
+        this.tvId = tvId;
     }
 }

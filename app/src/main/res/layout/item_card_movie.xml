@@ -35,7 +35,7 @@
             android:padding="@dimen/_4dp"
             android:fontFamily="@font/open_sans_bold"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
+            android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@id/img_movie_item"
@@ -43,7 +43,7 @@
             tools:text="Disgusting Movie" />
 
         <TextView
-            android:id="@+id/tv_genre_movie_item"
+            android:id="@+id/tv_overview_movie_item"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="24dp"
@@ -52,6 +52,8 @@
             android:padding="4dp"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:lineSpacingExtra="4sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

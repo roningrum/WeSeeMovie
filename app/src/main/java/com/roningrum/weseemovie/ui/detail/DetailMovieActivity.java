@@ -2,7 +2,9 @@ package com.roningrum.weseemovie.ui.detail;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +13,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.roningrum.weseemovie.R;
-import com.roningrum.weseemovie.data.Movie;
+import com.roningrum.weseemovie.utils.DateHelper;
 import com.roningrum.weseemovie.utils.GlideApp;
+import com.roningrum.weseemovie.viewmodel.ViewModelFactory;
 
 import java.util.Objects;
 
@@ -25,14 +28,12 @@ public class DetailMovieActivity extends AppCompatActivity {
 
     @BindView(R.id.tv_name_movie_detail)
     TextView tvNameMoviesDetail;
-    @BindView(R.id.tv_genre_movie_detail)
-    TextView tvGenreMoviesDetail;
+    @BindView(R.id.tv_rate_movie)
+    TextView tvRateMovie;
     @BindView(R.id.tv_duration_movie_item)
     TextView tvDurationMoviesDetail;
     @BindView(R.id.tv_release_time_detail)
     TextView tvReleaseDateMoviesDetail;
-    @BindView(R.id.tv_director_detail)
-    TextView tvDirectorMoviesDetail;
     @BindView(R.id.tv_sinopsis_detail)
     TextView tvSynopsisMoviesDetail;
 
@@ -45,7 +46,8 @@ public class DetailMovieActivity extends AppCompatActivity {
     AppBarLayout appBarLayout;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
+    @BindView(R.id.pb_loading)
+    ProgressBar pbLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,48 +59,59 @@ public class DetailMovieActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-        detailMovieViewModel = ViewModelProviders.of(this).get(DetailMovieViewModel.class);
+        pbLoading.setVisibility(View.VISIBLE);
+        detailMovieViewModel = obtainViewModel(this);
         showDetailMovie();
-
 
     }
 
+    @SuppressLint({"ResourceAsColor", "SetTextI18n"})
     private void showDetailMovie() {
-        Movie movie = getIntent().getParcelableExtra(EXTRA_FILMS);
-        if (movie != null) {
-            detailMovieViewModel.setMovie(movie);
-            Movie movieData = detailMovieViewModel.getMovie();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            int movieId = extras.getInt(EXTRA_FILMS);
+            detailMovieViewModel.getMovieDetail(movieId).observe(this, movie -> {
+                pbLoading.setVisibility(View.GONE);
+                appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+                    boolean isVisible = true;
+                    int scrollRange = -1;
 
-            appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-                boolean isVisible = true;
-                int scrollRange = -1;
 
-                @SuppressLint("ResourceAsColor")
-                @Override
-                public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                    if (scrollRange == -1) {
-                        scrollRange = appBarLayout.getTotalScrollRange();
+                    @Override
+                    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                        if (scrollRange == -1) {
+                            scrollRange = appBarLayout.getTotalScrollRange();
+                        }
+                        if (scrollRange + verticalOffset == 0) {
+                            toolbar.setTitle(movie.getTitle());
+                            isVisible = true;
+                        } else if (isVisible) {
+                            toolbar.setTitle("");
+                            isVisible = false;
+                        }
                     }
-                    if (scrollRange + verticalOffset == 0) {
-                        toolbar.setTitle(movieData.getName());
-                        isVisible = true;
-                    } else if (isVisible) {
-                        toolbar.setTitle("");
-                        isVisible = false;
-                    }
-                }
+                });
+                tvNameMoviesDetail.setText(movie.getTitle());
+                String duration = String.valueOf(movie.getRuntime());
+                tvDurationMoviesDetail.setText(duration + " " + getString(R.string.minute));
+                tvRateMovie.setText(String.valueOf(movie.getVote_average()));
+                DateHelper dateHelper = new DateHelper();
+                tvReleaseDateMoviesDetail.setText(dateHelper.getReleaseDate(movie.getRelease_date()));
+                tvSynopsisMoviesDetail.setText(movie.getOverview());
+
+                GlideApp.with(getApplicationContext()).load(movie.getPoster_path()).into(imgPosterDetail);
+                GlideApp.with(getApplicationContext()).load(movie.getBackdrop_path()).into(imgBannerDetail);
             });
-            tvNameMoviesDetail.setText(movieData.getName());
-            tvDurationMoviesDetail.setText(movieData.getDuration());
-            tvGenreMoviesDetail.setText(movieData.getGenre());
-            tvReleaseDateMoviesDetail.setText(movieData.getDate());
-            tvDirectorMoviesDetail.setText(movieData.getCreator());
-            tvSynopsisMoviesDetail.setText(movieData.getSynopsis());
 
-            GlideApp.with(getApplicationContext()).load(movieData.getPoster()).into(imgPosterDetail);
-            GlideApp.with(getApplicationContext()).load(movieData.getPhotoBanner()).into(imgBannerDetail);
+
         }
 
     }
+
+    private DetailMovieViewModel obtainViewModel(DetailMovieActivity detailMovieActivity) {
+        ViewModelFactory factory = ViewModelFactory.getInstance(detailMovieActivity.getApplication());
+        return ViewModelProviders.of(detailMovieActivity, factory).get(DetailMovieViewModel.class);
+    }
+
+
 }

@@ -2,7 +2,6 @@ package com.roningrum.weseemovie.ui.home;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -16,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeMenuActivity extends AppCompatActivity {
-    private static final String SELECTED_MENU = "selected_menu";
+    //    private static final String SELECTED_MENU = "selected_menu";
     private final BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener = menuItem -> {
         Fragment fragment = null;
         if (menuItem.getItemId() == R.id.nav_movie_menu) {
@@ -43,18 +42,8 @@ public class HomeMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_menu);
         ButterKnife.bind(this);
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
-
-        if (savedInstanceState != null) {
-            savedInstanceState.getInt(SELECTED_MENU);
-        } else {
+        if (savedInstanceState == null) {
             navView.setSelectedItemId(R.id.nav_movie_menu);
         }
     }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt(SELECTED_MENU, navView.getSelectedItemId());
-    }
-
 }

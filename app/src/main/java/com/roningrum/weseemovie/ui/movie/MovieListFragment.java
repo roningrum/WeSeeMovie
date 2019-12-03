@@ -5,20 +5,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.roningrum.weseemovie.R;
-import com.roningrum.weseemovie.data.Movie;
+import com.roningrum.weseemovie.viewmodel.ViewModelFactory;
 
-import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -33,6 +34,10 @@ public class MovieListFragment extends Fragment {
     RecyclerView rvMovies;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.pb_loading)
+    ProgressBar pbLoading;
+
+    private MovieAdapter movieAdapter;
     //    private ProgressBar progressBar;
 
 
@@ -65,15 +70,23 @@ public class MovieListFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (getActivity() != null) {
-            MovieViewModel movieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
-            List<Movie> movies = movieViewModel.getAllMovies();
-
-            MovieAdapter movieAdapter = new MovieAdapter(getActivity());
-            movieAdapter.setMovies(movies);
+            MovieViewModel movieViewModel = obtainViewModel(getActivity());
+            movieAdapter = new MovieAdapter(getActivity());
+            pbLoading.setVisibility(View.VISIBLE);
+            movieViewModel.getAllMovies().observe(this, movies -> {
+                pbLoading.setVisibility(View.GONE);
+                movieAdapter.setMovies(movies);
+                movieAdapter.notifyDataSetChanged();
+            });
 
             rvMovies.setLayoutManager(new LinearLayoutManager(getActivity()));
             rvMovies.setHasFixedSize(true);
             rvMovies.setAdapter(movieAdapter);
         }
+    }
+
+    private MovieViewModel obtainViewModel(FragmentActivity activity) {
+        ViewModelFactory factory = ViewModelFactory.getInstance(activity.getApplication());
+        return ViewModelProviders.of(activity, factory).get(MovieViewModel.class);
     }
 }

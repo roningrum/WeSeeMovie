@@ -5,20 +5,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.roningrum.weseemovie.R;
-import com.roningrum.weseemovie.data.TVShow;
+import com.roningrum.weseemovie.viewmodel.ViewModelFactory;
 
-import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -31,10 +32,12 @@ import butterknife.ButterKnife;
 public class TVShowListFragment extends Fragment {
     @BindView(R.id.rv_tv_show)
     RecyclerView rvTVshows;
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.pb_loading)
+    ProgressBar pbLoading;
 
+    private TVShowAdapter tvShowAdapter;
 
     public TVShowListFragment() {
         // Required empty public constructor
@@ -65,15 +68,23 @@ public class TVShowListFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (getActivity() != null) {
-            TVShowViewModel tvShowViewModel = ViewModelProviders.of(this).get(TVShowViewModel.class);
-            List<TVShow> tvShows = tvShowViewModel.getAllTvShows();
-
-            TVShowAdapter tvShowAdapter = new TVShowAdapter(getActivity());
-            tvShowAdapter.setTvShows(tvShows);
+            TVShowViewModel tvShowViewModel = obtainViewModel(getActivity());
+            tvShowAdapter = new TVShowAdapter(getActivity());
+            pbLoading.setVisibility(View.VISIBLE);
+            tvShowViewModel.getAllTvShows().observe(this, tvShows -> {
+                pbLoading.setVisibility(View.GONE);
+                tvShowAdapter.setTvShows(tvShows);
+                tvShowAdapter.notifyDataSetChanged();
+            });
 
             rvTVshows.setLayoutManager(new LinearLayoutManager(getActivity()));
             rvTVshows.setHasFixedSize(true);
             rvTVshows.setAdapter(tvShowAdapter);
         }
+    }
+
+    private TVShowViewModel obtainViewModel(FragmentActivity activity) {
+        ViewModelFactory factory = ViewModelFactory.getInstance(activity.getApplication());
+        return ViewModelProviders.of(activity, factory).get(TVShowViewModel.class);
     }
 }

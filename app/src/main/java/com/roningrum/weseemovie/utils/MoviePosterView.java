@@ -36,7 +36,7 @@ public class MoviePosterView extends AppCompatImageView {
     @Override
     protected void onDraw(Canvas canvas) {
         RectF rect = new RectF(0, 0, this.getWidth(), this.getHeight());
-        float radius = 12.0f;
+        float radius = 16.0f;
         path.addRoundRect(rect, radius, radius, Path.Direction.CW);
         canvas.clipPath(path);
         super.onDraw(canvas);

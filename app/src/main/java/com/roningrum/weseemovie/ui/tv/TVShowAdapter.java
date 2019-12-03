@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.roningrum.weseemovie.R;
-import com.roningrum.weseemovie.data.TVShow;
+import com.roningrum.weseemovie.data.locale.entity.TVShow;
 import com.roningrum.weseemovie.ui.detail.DetailTVShowActivity;
 import com.roningrum.weseemovie.utils.GlideApp;
 
@@ -28,10 +28,6 @@ public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.TVShowHold
 
     TVShowAdapter(Activity activity) {
         this.activity = activity;
-    }
-
-    private List<TVShow> getTvShows() {
-        return tvShows;
     }
 
     void setTvShows(List<TVShow> tvShows) {
@@ -59,8 +55,8 @@ public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.TVShowHold
     class TVShowHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tv_name_tvshows_item)
         TextView tvNameTVShows;
-        @BindView(R.id.tv_genre_tvshows_item)
-        TextView tvGenreTVShows;
+        @BindView(R.id.tv_overview_tv_item)
+        TextView tvOverviewTV;
         @BindView(R.id.img_tv_shows_item)
         ImageView imgTVShow;
 
@@ -71,11 +67,12 @@ public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.TVShowHold
 
         void bindDataTVShows(TVShow tvShow) {
             tvNameTVShows.setText(tvShow.getName());
-            tvGenreTVShows.setText(tvShow.getGenre());
-            GlideApp.with(itemView.getContext()).load(tvShow.getPoster()).into(imgTVShow);
+            tvOverviewTV.setText(tvShow.getOverview());
+//            tvGenreTVShows.setText(tvShow.getGenre());
+            GlideApp.with(itemView.getContext()).load(tvShow.getPoster_path()).into(imgTVShow);
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(activity, DetailTVShowActivity.class);
-                intent.putExtra(DetailTVShowActivity.EXTRA_TV, getTvShows().get(getAdapterPosition()));
+                intent.putExtra(DetailTVShowActivity.EXTRA_TV, tvShow.getId());
                 activity.startActivity(intent);
             });
         }

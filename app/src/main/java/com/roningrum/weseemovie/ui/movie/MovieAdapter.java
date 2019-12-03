@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.roningrum.weseemovie.R;
-import com.roningrum.weseemovie.data.Movie;
+import com.roningrum.weseemovie.data.locale.entity.Movie;
 import com.roningrum.weseemovie.ui.detail.DetailMovieActivity;
 import com.roningrum.weseemovie.utils.GlideApp;
 
@@ -59,8 +59,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     class MovieViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tv_name_movie_item)
         TextView tvNameMovieItem;
-        @BindView(R.id.tv_genre_movie_item)
-        TextView tvGenreMovie;
+        @BindView(R.id.tv_overview_movie_item)
+        TextView tvSummaryMovie;
         @BindView(R.id.img_movie_item)
         ImageView imgMovieItem;
 
@@ -70,12 +70,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         }
 
         void bindDataMovies(Movie movie) {
-            tvNameMovieItem.setText(movie.getName());
-            tvGenreMovie.setText(movie.getGenre());
-            GlideApp.with(itemView.getContext()).load(movie.getPoster()).into(imgMovieItem);
+            tvNameMovieItem.setText(movie.getTitle());
+            tvSummaryMovie.setText(movie.getOverview());
+            GlideApp.with(itemView.getContext()).load(movie.getPoster_path()).into(imgMovieItem);
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(activity, DetailMovieActivity.class);
-                intent.putExtra(DetailMovieActivity.EXTRA_FILMS, getMovies().get(getAdapterPosition()));
+                intent.putExtra(DetailMovieActivity.EXTRA_FILMS, movie.getId());
                 activity.startActivity(intent);
             });
         }

@@ -9,5 +9,8 @@
     <string name="synopsis">Synopsis</string>
     <string name="poster">poster</string>
     <string name="duration">Duration</string>
+    <string name="rate">rate</string>
+    <string name="minute">minute</string>
+    <string name="season">season</string>
 
 </resources>
