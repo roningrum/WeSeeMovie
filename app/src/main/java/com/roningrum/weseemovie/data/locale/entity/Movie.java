@@ -12,6 +12,25 @@ public class Movie {
     private String release_date;
     private double vote_average;
 
+    public Movie(int id, String backdrop_path, String overview, String poster_path, String title, double vote_average) {
+        this.id = id;
+        this.backdrop_path = backdrop_path;
+        this.overview = overview;
+        this.poster_path = poster_path;
+        this.title = title;
+        this.vote_average = vote_average;
+    }
+
+    public Movie(int id, String backdrop_path, String overview, String poster_path, String title, int runtime, String release_date, double vote_average) {
+        this.id = id;
+        this.backdrop_path = backdrop_path;
+        this.overview = overview;
+        this.poster_path = poster_path;
+        this.title = title;
+        this.runtime = runtime;
+        this.release_date = release_date;
+        this.vote_average = vote_average;
+    }
 
     public int getId() {
         return id;

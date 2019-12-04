@@ -1,44 +1,44 @@
 package com.roningrum.weseemovie.ui.detail;
 
-import com.roningrum.weseemovie.R;
-import com.roningrum.weseemovie.data.Movie;
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+
+import com.roningrum.weseemovie.data.locale.entity.Movie;
+import com.roningrum.weseemovie.data.source.MovieRepository;
+import com.roningrum.weseemovie.ui.utils.FakeMovieDataDummy;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class DetailMovieViewModelTest {
+    @Rule
+    public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
+
     private DetailMovieViewModel viewModel;
-    private Movie movieDummy;
+    private MovieRepository movieRepository = mock(MovieRepository.class);
+    private Movie movieDummy = FakeMovieDataDummy.getMovieDetail();
+    private int movieId = movieDummy.getId();
 
     @Before
     public void setUp() {
-        viewModel = new DetailMovieViewModel();
-        movieDummy = new Movie("Alita: Battle Angel(2019)",
-                "Action,Science Fiction, \nThriller, Adventure",
-                "2h 2m",
-                "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
-                "Robert Rodriguez",
-                "January 31st 2019",
-                R.drawable.banner_movie_alita,
-                R.drawable.poster_alita);
+        viewModel = new DetailMovieViewModel(movieRepository);
+        viewModel.setMovieId(movieId);
     }
 
     @Test
     public void getMovieDetail() {
-        viewModel.setMovie(movieDummy);
-        Movie movieDummyData = viewModel.getMovie();
-        assertNotNull(movieDummyData);
-        assertEquals(movieDummy.getName(), movieDummyData.getName());
-        assertEquals(movieDummy.getGenre(), movieDummyData.getGenre());
-        assertEquals(movieDummy.getDuration(), movieDummyData.getDuration());
-        assertEquals(movieDummy.getSynopsis(), movieDummyData.getSynopsis());
-        assertEquals(movieDummy.getCreator(), movieDummyData.getCreator());
-        assertEquals(movieDummy.getDate(), movieDummyData.getDate());
-        assertEquals(movieDummy.getPhotoBanner(), movieDummyData.getPhotoBanner());
-        assertEquals(movieDummy.getPoster(), movieDummyData.getPoster());
+        MutableLiveData<Movie> movie = new MutableLiveData<>();
+        movie.setValue(movieDummy);
+        when(movieRepository.getMovieDetails(movieId)).thenReturn(movie);
+        Observer<Movie> observer = mock(Observer.class);
+        viewModel.getMovieDetail(movieId).observeForever(observer);
+        verify(observer).onChanged(movieDummy);
     }
 
 }
