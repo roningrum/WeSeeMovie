@@ -80,7 +80,7 @@ public class MovieRepositoryTest {
     }
 
     @Test
-    public void getTVShows() {
+    public void getTVShowsDetail() {
         doAnswer(invocation -> {
             ((RemoteRepository.LoadTvShowDetailCallback) invocation.getArguments()[1])
                     .onTvShowDetailReceive(tvShowDetail);

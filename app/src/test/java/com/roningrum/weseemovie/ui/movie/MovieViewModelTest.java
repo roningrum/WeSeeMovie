@@ -37,6 +37,7 @@ public class MovieViewModelTest {
         MutableLiveData<List<Movie>> movies = new MutableLiveData<>();
         movies.setValue(dummyMovies);
         when(movieRepository.getAllMovies()).thenReturn(movies);
+
         Observer<List<Movie>> observer = mock(Observer.class);
         movieViewModel.getAllMovies().observeForever(observer);
         verify(observer).onChanged(dummyMovies);
