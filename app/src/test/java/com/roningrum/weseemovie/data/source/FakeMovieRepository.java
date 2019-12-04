@@ -13,7 +13,7 @@ import java.util.List;
 
 public class FakeMovieRepository implements MovieDataSource {
     private volatile static FakeMovieRepository INSTANCE = null;
-    private RemoteRepository remoteRepository;
+    private final RemoteRepository remoteRepository;
 
     FakeMovieRepository(RemoteRepository remoteRepository) {
         this.remoteRepository = remoteRepository;

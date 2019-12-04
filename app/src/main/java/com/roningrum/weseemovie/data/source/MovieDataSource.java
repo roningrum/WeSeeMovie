@@ -7,7 +7,7 @@ import com.roningrum.weseemovie.data.locale.entity.TVShow;
 
 import java.util.List;
 
-public interface MovieDataSource {
+interface MovieDataSource {
 
     LiveData<List<Movie>> getAllMovies();
 

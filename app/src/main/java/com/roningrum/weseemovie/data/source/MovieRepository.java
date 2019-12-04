@@ -13,7 +13,7 @@ import java.util.List;
 
 public class MovieRepository implements MovieDataSource {
     private volatile static MovieRepository INSTANCE = null;
-    private RemoteRepository remoteRepository;
+    private final RemoteRepository remoteRepository;
 
     private MovieRepository(RemoteRepository remoteRepository) {
         this.remoteRepository = remoteRepository;

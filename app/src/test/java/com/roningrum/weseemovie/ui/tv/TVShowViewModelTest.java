@@ -24,7 +24,7 @@ public class TVShowViewModelTest {
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
     private TVShowViewModel tvShowViewModel;
-    private MovieRepository movieRepository = mock(MovieRepository.class);
+    private final MovieRepository movieRepository = mock(MovieRepository.class);
 
     @Before
     public void setUp() {

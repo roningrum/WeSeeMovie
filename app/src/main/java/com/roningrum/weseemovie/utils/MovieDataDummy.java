@@ -1,6 +1,6 @@
 package com.roningrum.weseemovie.utils;
 
-public class MovieDataDummy {
+class MovieDataDummy {
 //    public static ArrayList<Movie> generateDummyMovies() {
 //        ArrayList<Movie> movies = new ArrayList<>();
 //        movies.add(new Movie(

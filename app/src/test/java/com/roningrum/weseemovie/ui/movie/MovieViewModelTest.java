@@ -24,7 +24,7 @@ public class MovieViewModelTest {
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
     private MovieViewModel movieViewModel;
-    private MovieRepository movieRepository = mock(MovieRepository.class);
+    private final MovieRepository movieRepository = mock(MovieRepository.class);
 
     @Before
     public void setUp() {

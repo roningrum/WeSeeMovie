@@ -29,15 +29,15 @@ public class MovieRepositoryTest {
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
-    private RemoteRepository remote = Mockito.mock(RemoteRepository.class);
-    private FakeMovieRepository fakeMovieRepository = new FakeMovieRepository(remote);
+    private final RemoteRepository remote = Mockito.mock(RemoteRepository.class);
+    private final FakeMovieRepository fakeMovieRepository = new FakeMovieRepository(remote);
 
-    private ArrayList<Movie> movies = FakeMovieDataDummy.generateDummyMovies();
-    private ArrayList<TVShow> tvShows = FakeMovieDataDummy.generateDummyTVShow();
-    private TVShow tvShowDetail = FakeMovieDataDummy.getTvShowsDetail();
-    private Movie movieDetail = FakeMovieDataDummy.getMovieDetail();
-    private int movieId = movies.get(0).getId();
-    private int tvShowId = tvShows.get(0).getId();
+    private final ArrayList<Movie> movies = FakeMovieDataDummy.generateDummyMovies();
+    private final ArrayList<TVShow> tvShows = FakeMovieDataDummy.generateDummyTVShow();
+    private final TVShow tvShowDetail = FakeMovieDataDummy.getTvShowsDetail();
+    private final Movie movieDetail = FakeMovieDataDummy.getMovieDetail();
+    private final int movieId = movies.get(0).getId();
+    private final int tvShowId = tvShows.get(0).getId();
 
     @Before
     public void setUp() {

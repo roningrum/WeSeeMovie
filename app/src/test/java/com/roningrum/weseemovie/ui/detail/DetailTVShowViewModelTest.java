@@ -20,9 +20,9 @@ public class DetailTVShowViewModelTest {
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
     private DetailTVShowViewModel viewModel;
-    private MovieRepository movieRepository = mock(MovieRepository.class);
-    private TVShow tvShowDummy = FakeMovieDataDummy.getTvShowsDetail();
-    private int tvshowId = tvShowDummy.getId();
+    private final MovieRepository movieRepository = mock(MovieRepository.class);
+    private final TVShow tvShowDummy = FakeMovieDataDummy.getTvShowsDetail();
+    private final int tvshowId = tvShowDummy.getId();
 
     @Before
     public void setUp() {

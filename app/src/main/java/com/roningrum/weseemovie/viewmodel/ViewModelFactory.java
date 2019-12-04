@@ -18,7 +18,7 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
     private final MovieRepository movieRepository;
 
-    public ViewModelFactory(MovieRepository movieRepository) {
+    private ViewModelFactory(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
 

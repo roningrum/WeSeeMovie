@@ -85,8 +85,8 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-android:2.23.4"
 
     //ButterKnife
-    implementation 'com.jakewharton:butterknife:10.1.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
 
     //Retrofit
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"

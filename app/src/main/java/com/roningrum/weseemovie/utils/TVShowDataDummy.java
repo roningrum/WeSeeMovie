@@ -1,6 +1,6 @@
 package com.roningrum.weseemovie.utils;
 
-public class TVShowDataDummy {
+class TVShowDataDummy {
 //    public static ArrayList<TVShow> generateDummyTvs() {
 ////        ArrayList<TVShow> tvshows = new ArrayList<>();
 ////

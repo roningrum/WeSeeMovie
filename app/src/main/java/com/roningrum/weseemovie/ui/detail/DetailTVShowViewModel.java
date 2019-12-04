@@ -8,13 +8,13 @@ import com.roningrum.weseemovie.data.source.MovieRepository;
 
 public class DetailTVShowViewModel extends ViewModel {
     private int tvId;
-    private MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
 
     public DetailTVShowViewModel(MovieRepository mMovieRepository) {
         this.movieRepository = mMovieRepository;
     }
 
-    public LiveData<TVShow> getTvShowDetail(int tvId) {
+    LiveData<TVShow> getTvShowDetail(int tvId) {
         return movieRepository.getTvShowDetails(tvId);
     }
 

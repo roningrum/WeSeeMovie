@@ -8,7 +8,7 @@ import com.roningrum.weseemovie.data.source.MovieRepository;
 
 public class DetailMovieViewModel extends ViewModel {
     private int movieId;
-    private MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
 
     public DetailMovieViewModel(MovieRepository mMovieRepository) {
         this.movieRepository = mMovieRepository;
@@ -22,7 +22,7 @@ public class DetailMovieViewModel extends ViewModel {
         return movieId;
     }
 
-    public void setMovieId(int movieId) {
+    void setMovieId(int movieId) {
         this.movieId = movieId;
     }
 }

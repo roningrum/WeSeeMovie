@@ -21,9 +21,9 @@ public class DetailMovieViewModelTest {
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
     private DetailMovieViewModel viewModel;
-    private MovieRepository movieRepository = mock(MovieRepository.class);
-    private Movie movieDummy = FakeMovieDataDummy.getMovieDetail();
-    private int movieId = movieDummy.getId();
+    private final MovieRepository movieRepository = mock(MovieRepository.class);
+    private final Movie movieDummy = FakeMovieDataDummy.getMovieDetail();
+    private final int movieId = movieDummy.getId();
 
     @Before
     public void setUp() {

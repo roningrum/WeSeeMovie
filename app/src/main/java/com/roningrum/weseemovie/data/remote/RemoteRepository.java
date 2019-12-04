@@ -18,7 +18,7 @@ import retrofit2.Response;
 
 public class RemoteRepository {
     private static RemoteRepository INSTANCE;
-    private ApiService apiService;
+    private final ApiService apiService;
 
     private RemoteRepository(ApiService apiService) {
         this.apiService = apiService;
