@@ -8,6 +8,7 @@ import com.roningrum.weseemovie.data.remote.api.ApiService;
 import com.roningrum.weseemovie.data.remote.response.Constant;
 import com.roningrum.weseemovie.data.remote.response.MovieResponse;
 import com.roningrum.weseemovie.data.remote.response.TvResponse;
+import com.roningrum.weseemovie.utils.EspressoIdlingResource;
 
 import java.util.List;
 
@@ -31,27 +32,32 @@ public class RemoteRepository {
     }
 
     public void getAllMovies(LoadMoviesCallback loadMovieCallback) {
+        EspressoIdlingResource.increment();
         Call<MovieResponse> movieResponseCall = apiService.getMovieList(Constant.language);
         movieResponseCall.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(@NonNull Call<MovieResponse> call, @NonNull Response<MovieResponse> response) {
+                assert response.body() != null;
                 loadMovieCallback.onAllMoviesReceive(response.body().getResults());
+                EspressoIdlingResource.decrement();
             }
 
             @Override
             public void onFailure(@NonNull Call<MovieResponse> call, @NonNull Throwable t) {
                 loadMovieCallback.onDataNotAvailable(t.getMessage());
-
             }
         });
     }
 
     public void getAllTvShow(LoadTvShowsCallback loadTvShowsCallback) {
+        EspressoIdlingResource.increment();
         Call<TvResponse> tvResponseCall = apiService.getTVList(Constant.language);
         tvResponseCall.enqueue(new Callback<TvResponse>() {
             @Override
             public void onResponse(@NonNull Call<TvResponse> call, @NonNull Response<TvResponse> response) {
+                assert response.body() != null;
                 loadTvShowsCallback.onAllTvShowsReceive(response.body().getResults());
+                EspressoIdlingResource.decrement();
             }
 
             @Override
@@ -62,11 +68,13 @@ public class RemoteRepository {
     }
 
     public void getMovieDetail(int movieId, LoadMovieDetailCallback loadMovieDetailCallback) {
+        EspressoIdlingResource.increment();
         Call<Movie> movieCall = apiService.getMovieDetail(movieId, Constant.language);
         movieCall.enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(@NonNull Call<Movie> call, @NonNull Response<Movie> response) {
                 loadMovieDetailCallback.onMovieDetailReceive(response.body());
+                EspressoIdlingResource.decrement();
             }
 
             @Override
@@ -77,11 +85,13 @@ public class RemoteRepository {
     }
 
     public void getTvShowDetail(int tvId, LoadTvShowDetailCallback loadTvShowDetailCallback) {
+        EspressoIdlingResource.increment();
         Call<TVShow> tvShowCall = apiService.getTvShowDetail(tvId, Constant.language);
         tvShowCall.enqueue(new Callback<TVShow>() {
             @Override
             public void onResponse(@NonNull Call<TVShow> call, @NonNull Response<TVShow> response) {
                 loadTvShowDetailCallback.onTvShowDetailReceive(response.body());
+                EspressoIdlingResource.decrement();
             }
 
             @Override
