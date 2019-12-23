@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.roningrum.weseemovie.R;
+import com.roningrum.weseemovie.ui.favorit.FavoriteFragment;
 import com.roningrum.weseemovie.ui.movie.MovieListFragment;
 import com.roningrum.weseemovie.ui.tv.TVShowListFragment;
 
@@ -22,6 +23,8 @@ public class HomeMenuActivity extends AppCompatActivity {
             fragment = MovieListFragment.newInstance();
         } else if (menuItem.getItemId() == R.id.nav_tv_menu) {
             fragment = TVShowListFragment.newInstance();
+        } else if (menuItem.getItemId() == R.id.nav_fav_menu) {
+            fragment = FavoriteFragment.newInstance();
         }
 
         if (fragment != null) {

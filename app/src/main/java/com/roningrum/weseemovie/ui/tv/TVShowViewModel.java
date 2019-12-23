@@ -9,7 +9,7 @@ import com.roningrum.weseemovie.data.source.MovieRepository;
 import java.util.List;
 
 public class TVShowViewModel extends ViewModel {
-    private final MovieRepository movieRepository;
+    private MovieRepository movieRepository;
 
     public TVShowViewModel(MovieRepository mMovieRepository) {
         this.movieRepository = mMovieRepository;
