@@ -2,6 +2,8 @@ package com.roningrum.weseemovie.data.source;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.lifecycle.MutableLiveData;
+import androidx.paging.DataSource;
+import androidx.paging.PagedList;
 
 import com.roningrum.weseemovie.data.source.locale.LocalRepository;
 import com.roningrum.weseemovie.data.source.locale.entity.MovieEntity;
@@ -12,6 +14,7 @@ import com.roningrum.weseemovie.model.TVShow;
 import com.roningrum.weseemovie.ui.utils.FakeMovieDataDummy;
 import com.roningrum.weseemovie.ui.utils.InstantAppExecutors;
 import com.roningrum.weseemovie.ui.utils.LiveDataTestUtils;
+import com.roningrum.weseemovie.ui.utils.PagedListUtil;
 import com.roningrum.weseemovie.vo.Resource;
 
 import org.junit.After;
@@ -24,6 +27,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -111,6 +115,32 @@ public class MovieRepositoryTest {
         assertNotNull(result.data);
         assertNotNull(result.data.getTitle());
         assertEquals(movies.get(0).getTitle(), result.data.getTitle());
+    }
+
+    @Test
+    public void getFavoriteTVShows() {
+        DataSource.Factory<Integer, TVShowEntity> dataSource = mock(DataSource.Factory.class);
+
+        when(local.getTvShowFavs()).thenReturn(dataSource);
+        fakeMovieRepository.getFavoriteTvShowPaged();
+        Resource<PagedList<TVShowEntity>> result = Resource.success(PagedListUtil.mockPagedList(tvShowLocals));
+
+        verify(local).getTvShowFavs();
+        assertNotNull(result.data);
+        assertEquals(tvShowLocals.size(), result.data.size());
+    }
+
+    @Test
+    public void getFavoriteMovies() {
+        DataSource.Factory<Integer, MovieEntity> dataSource = mock(DataSource.Factory.class);
+
+        when(local.getMoviesFavs()).thenReturn(dataSource);
+        fakeMovieRepository.getFavoritedMoviePaged();
+        Resource<PagedList<MovieEntity>> result = Resource.success(PagedListUtil.mockPagedList(movieLocals));
+
+        verify(local).getMoviesFavs();
+        assertNotNull(result.data);
+        assertEquals(movieLocals.size(), result.data.size());
     }
 
 

@@ -3,6 +3,7 @@ package com.roningrum.weseemovie.ui.tv;
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
+import androidx.paging.PagedList;
 
 import com.roningrum.weseemovie.data.source.MovieRepository;
 import com.roningrum.weseemovie.data.source.locale.entity.TVShowEntity;
@@ -44,6 +45,22 @@ public class TVShowViewModelTest {
         tvShowViewModel.setUserName(USERNAME);
         tvShowViewModel.tvShows.observeForever(observer);
         verify(observer).onChanged(resource);
+    }
+
+    @Test
+    public void getFavTvShows() {
+        MutableLiveData<Resource<PagedList<TVShowEntity>>> dummyTvShows = new MutableLiveData<>();
+        PagedList<TVShowEntity> pagedList = mock(PagedList.class);
+
+        dummyTvShows.setValue(Resource.success(pagedList));
+
+        when(movieRepository.getFavoriteTvShowPaged()).thenReturn(dummyTvShows);
+
+        Observer<Resource<PagedList<TVShowEntity>>> observer = mock(Observer.class);
+
+        tvShowViewModel.getFavoritedTvSPaged().observeForever(observer);
+
+        verify(observer).onChanged(Resource.success(pagedList));
 
     }
 
