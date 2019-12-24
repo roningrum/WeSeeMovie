@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.snackbar.Snackbar;
 import com.roningrum.weseemovie.R;
 import com.roningrum.weseemovie.data.source.locale.entity.MovieEntity;
-import com.roningrum.weseemovie.ui.favorit.adapter.FavoriteMoviePagedAdapter;
+import com.roningrum.weseemovie.ui.favorit.adapter.FavMoviePagedAdapter;
 import com.roningrum.weseemovie.ui.movie.MovieViewModel;
 import com.roningrum.weseemovie.viewmodel.ViewModelFactory;
 
@@ -36,7 +36,7 @@ public class FavMovieFragment extends Fragment {
     @BindView(R.id.pb_loading)
     ProgressBar pbLoading;
 
-    private FavoriteMoviePagedAdapter adapter;
+    private FavMoviePagedAdapter adapter;
     private MovieViewModel movieViewModel;
     private ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.Callback() {
         @Override
@@ -90,7 +90,7 @@ public class FavMovieFragment extends Fragment {
         if (getActivity() != null) {
             movieViewModel = obtainViewModel(getActivity());
 
-            adapter = new FavoriteMoviePagedAdapter(this.getActivity());
+            adapter = new FavMoviePagedAdapter(this.getActivity());
 
             movieViewModel.getFavoritedMoviePaged().observe(this, movies -> {
                 if (movies != null) {

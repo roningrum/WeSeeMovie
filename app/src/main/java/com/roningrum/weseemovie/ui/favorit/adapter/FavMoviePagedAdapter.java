@@ -24,7 +24,7 @@ import com.roningrum.weseemovie.utils.GlideApp;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FavoriteMoviePagedAdapter extends PagedListAdapter<MovieEntity, FavoriteMoviePagedAdapter.FavMovieViewHolder> {
+public class FavMoviePagedAdapter extends PagedListAdapter<MovieEntity, FavMoviePagedAdapter.FavMovieViewHolder> {
 
     private static DiffUtil.ItemCallback<MovieEntity> DIFF_CALLBACK =
             new DiffUtil.ItemCallback<MovieEntity>() {
@@ -42,7 +42,7 @@ public class FavoriteMoviePagedAdapter extends PagedListAdapter<MovieEntity, Fav
     private final Activity activity;
 
 
-    public FavoriteMoviePagedAdapter(Activity activity) {
+    public FavMoviePagedAdapter(Activity activity) {
         super(DIFF_CALLBACK);
         this.activity = activity;
     }
@@ -53,12 +53,12 @@ public class FavoriteMoviePagedAdapter extends PagedListAdapter<MovieEntity, Fav
 
     @NonNull
     @Override
-    public FavoriteMoviePagedAdapter.FavMovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FavMoviePagedAdapter.FavMovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new FavMovieViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_movie, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FavoriteMoviePagedAdapter.FavMovieViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FavMoviePagedAdapter.FavMovieViewHolder holder, int position) {
         MovieEntity movieEntity = getItem(position);
         if (movieEntity != null) {
             holder.bindDataMovies(movieEntity);
