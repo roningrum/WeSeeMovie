@@ -1,6 +1,6 @@
-package com.roningrum.weseemovie.data.remote.response;
+package com.roningrum.weseemovie.data.source.remote.response;
 
-import com.roningrum.weseemovie.data.locale.entity.Movie;
+import com.roningrum.weseemovie.model.Movie;
 
 import java.util.List;
 

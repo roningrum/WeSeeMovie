@@ -2,13 +2,18 @@ package com.roningrum.weseemovie.ui.detail;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.appbar.AppBarLayout;
@@ -52,6 +57,8 @@ public class DetailTVShowActivity extends AppCompatActivity {
     @BindView(R.id.pb_loading)
     ProgressBar pbLoading;
 
+    private Menu menu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,39 +88,103 @@ public class DetailTVShowActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             int tvId = extras.getInt(EXTRA_TV);
-            detailTVShowViewModel.getTvShowDetail(tvId).observe(this, tvShow -> {
-                pbLoading.setVisibility(View.GONE);
-                appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-                    boolean isVisible = true;
-                    int scrollRange = -1;
-
-                    @Override
-                    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                        if (scrollRange == -1) {
-                            scrollRange = appBarLayout.getTotalScrollRange();
-                        }
-                        if (scrollRange + verticalOffset == 0) {
-                            toolbar.setTitle(tvShow.getName());
-                            isVisible = true;
-                        } else if (isVisible) {
-                            toolbar.setTitle("");
-                            isVisible = false;
-                        }
-                    }
-                });
-
-                tvNameTvShowDetail.setText(tvShow.getName());
-                tvNumberSeason.setText(tvShow.getNumber_of_seasons() + " " + getString(R.string.season));
-                tvReleaseDateTV.setText(new DateHelper().getReleaseDate(tvShow.getFirst_air_date()));
-                tvRateTv.setText(String.valueOf(tvShow.getVote_average()));
-                tvSynopsisTvShowDetail.setText(tvShow.getOverview());
-
-
-                GlideApp.with(getApplicationContext()).load(tvShow.getPoster_path()).into(imgPosterDetail);
-                GlideApp.with(getApplicationContext()).load(tvShow.getBackdrop_path()).into(imgBannerDetail);
-            });
+            if (tvId != 0) {
+                detailTVShowViewModel.setTvId(tvId);
+            }
         }
+        detailTVShowViewModel.detailTvShows.observe(this, tvShowEntityResource -> {
+            pbLoading.setVisibility(View.GONE);
+            switch (tvShowEntityResource.status) {
+                case LOADING:
+                    pbLoading.setVisibility(View.VISIBLE);
+                    break;
+                case SUCCESS:
+                    pbLoading.setVisibility(View.GONE);
+                    if (tvShowEntityResource.data != null) {
+                        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+                            boolean isVisible = true;
+                            int scrollRange = -1;
+
+                            @Override
+                            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                                if (scrollRange == -1) {
+                                    scrollRange = appBarLayout.getTotalScrollRange();
+                                }
+                                if (scrollRange + verticalOffset == 0) {
+                                    toolbar.setTitle(tvShowEntityResource.data.getName());
+                                    isVisible = true;
+                                } else if (isVisible) {
+                                    toolbar.setTitle("");
+                                    isVisible = false;
+                                }
+                            }
+                        });
+
+                        tvNameTvShowDetail.setText(tvShowEntityResource.data.getName());
+                        tvNumberSeason.setText(tvShowEntityResource.data.getNumber_of_seasons() + " " + getString(R.string.season));
+                        tvReleaseDateTV.setText(new DateHelper().getReleaseDate(tvShowEntityResource.data.getFirst_air_date()));
+                        tvRateTv.setText(String.valueOf(tvShowEntityResource.data.getVote_average()));
+                        tvSynopsisTvShowDetail.setText(tvShowEntityResource.data.getOverview());
 
 
+                        GlideApp.with(getApplicationContext()).load(tvShowEntityResource.data.getPoster_path()).into(imgPosterDetail);
+                        GlideApp.with(getApplicationContext()).load(tvShowEntityResource.data.getBackdrop_path()).into(imgBannerDetail);
+                    }
+                    break;
+                case ERROR:
+                    pbLoading.setVisibility(View.GONE);
+                    Toast.makeText(getApplicationContext(), "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+
+        });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.fav_detail_menu, menu);
+        this.menu = menu;
+        detailTVShowViewModel.detailTvShows.observe(this, tvShowEntityResource -> {
+            if (tvShowEntityResource != null) {
+                switch (tvShowEntityResource.status) {
+                    case LOADING:
+                        pbLoading.setVisibility(View.VISIBLE);
+                        break;
+                    case SUCCESS:
+                        if (tvShowEntityResource.data != null) {
+                            pbLoading.setVisibility(View.GONE);
+                            boolean state = tvShowEntityResource.data.isFavorite();
+                            setFavoriteState(state);
+                        }
+                        break;
+                    case ERROR:
+                        pbLoading.setVisibility(View.GONE);
+                        Toast.makeText(getApplicationContext(), "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+        return true;
+    }
+
+    private void setFavoriteState(boolean state) {
+        if (menu == null) return;
+        MenuItem menuItem = menu.findItem(R.id.action_add_fav);
+        if (state) {
+            menuItem.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_favorited));
+        } else {
+            menuItem.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_favorite_border));
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_add_fav) {
+            detailTVShowViewModel.setFavoriteTVShow();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

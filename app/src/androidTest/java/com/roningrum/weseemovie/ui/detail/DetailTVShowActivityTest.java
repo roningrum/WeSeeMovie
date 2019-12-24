@@ -8,7 +8,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 
 import com.roningrum.weseemovie.R;
-import com.roningrum.weseemovie.data.locale.entity.TVShow;
+import com.roningrum.weseemovie.model.TVShow;
 import com.roningrum.weseemovie.utils.EspressoIdlingResource;
 import com.roningrum.weseemovie.utils.FakeMovieDataDummy;
 

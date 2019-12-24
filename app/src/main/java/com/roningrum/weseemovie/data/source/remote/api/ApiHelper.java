@@ -1,6 +1,6 @@
-package com.roningrum.weseemovie.data.remote.api;
+package com.roningrum.weseemovie.data.source.remote.api;
 
-import com.roningrum.weseemovie.data.remote.response.Constant;
+import com.roningrum.weseemovie.data.source.remote.response.Constant;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

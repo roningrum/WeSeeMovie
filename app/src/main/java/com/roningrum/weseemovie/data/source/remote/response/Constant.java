@@ -1,4 +1,4 @@
-package com.roningrum.weseemovie.data.remote.response;
+package com.roningrum.weseemovie.data.source.remote.response;
 
 import java.util.Locale;
 

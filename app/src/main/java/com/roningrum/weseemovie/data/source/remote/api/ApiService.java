@@ -1,10 +1,10 @@
-package com.roningrum.weseemovie.data.remote.api;
+package com.roningrum.weseemovie.data.source.remote.api;
 
 import com.roningrum.weseemovie.BuildConfig;
-import com.roningrum.weseemovie.data.locale.entity.Movie;
-import com.roningrum.weseemovie.data.locale.entity.TVShow;
-import com.roningrum.weseemovie.data.remote.response.MovieResponse;
-import com.roningrum.weseemovie.data.remote.response.TvResponse;
+import com.roningrum.weseemovie.data.source.remote.response.MovieResponse;
+import com.roningrum.weseemovie.data.source.remote.response.TvResponse;
+import com.roningrum.weseemovie.model.Movie;
+import com.roningrum.weseemovie.model.TVShow;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -2,6 +2,7 @@ package com.roningrum.weseemovie.ui.movie;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.roningrum.weseemovie.R;
-import com.roningrum.weseemovie.data.locale.entity.Movie;
+import com.roningrum.weseemovie.data.source.locale.entity.MovieEntity;
 import com.roningrum.weseemovie.ui.detail.DetailMovieActivity;
 import com.roningrum.weseemovie.utils.GlideApp;
 
@@ -24,17 +25,17 @@ import butterknife.ButterKnife;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
     private final Activity activity;
-    private final List<Movie> movies = new ArrayList<>();
+    private final List<MovieEntity> movies = new ArrayList<MovieEntity>();
 
     MovieAdapter(Activity activity) {
         this.activity = activity;
     }
 
-    private List<Movie> getMovies() {
+    private List<MovieEntity> getMovies() {
         return movies;
     }
 
-    void setMovies(List<Movie> movies) {
+    void setMovies(List<MovieEntity> movies) {
         if (movies == null) return;
         this.movies.clear();
         this.movies.addAll(movies);
@@ -69,10 +70,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             ButterKnife.bind(this, itemView);
         }
 
-        void bindDataMovies(Movie movie) {
+        void bindDataMovies(MovieEntity movie) {
             tvNameMovieItem.setText(movie.getTitle());
             tvSummaryMovie.setText(movie.getOverview());
             GlideApp.with(itemView.getContext()).load(movie.getPoster_path()).into(imgMovieItem);
+            Log.d("Check ", "Poster " + movie.getPoster_path());
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(activity, DetailMovieActivity.class);
                 intent.putExtra(DetailMovieActivity.EXTRA_FILMS, movie.getId());

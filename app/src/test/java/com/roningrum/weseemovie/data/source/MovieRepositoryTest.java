@@ -2,9 +2,9 @@ package com.roningrum.weseemovie.data.source;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 
-import com.roningrum.weseemovie.data.locale.entity.Movie;
-import com.roningrum.weseemovie.data.locale.entity.TVShow;
-import com.roningrum.weseemovie.data.remote.RemoteRepository;
+import com.roningrum.weseemovie.data.source.remote.RemoteRepository;
+import com.roningrum.weseemovie.model.Movie;
+import com.roningrum.weseemovie.model.TVShow;
 import com.roningrum.weseemovie.ui.utils.FakeMovieDataDummy;
 import com.roningrum.weseemovie.ui.utils.LiveDataTestUtils;
 

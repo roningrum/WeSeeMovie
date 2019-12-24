@@ -5,9 +5,9 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.roningrum.weseemovie.data.locale.entity.Movie;
-import com.roningrum.weseemovie.data.locale.entity.TVShow;
-import com.roningrum.weseemovie.data.remote.RemoteRepository;
+import com.roningrum.weseemovie.data.source.remote.RemoteRepository;
+import com.roningrum.weseemovie.model.Movie;
+import com.roningrum.weseemovie.model.TVShow;
 
 import java.util.List;
 

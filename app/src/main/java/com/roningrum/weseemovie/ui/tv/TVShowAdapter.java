@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.roningrum.weseemovie.R;
-import com.roningrum.weseemovie.data.locale.entity.TVShow;
+import com.roningrum.weseemovie.data.source.locale.entity.TVShowEntity;
 import com.roningrum.weseemovie.ui.detail.DetailTVShowActivity;
 import com.roningrum.weseemovie.utils.GlideApp;
 
@@ -24,13 +24,13 @@ import butterknife.ButterKnife;
 
 public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.TVShowHolder> {
     private final Activity activity;
-    private final List<TVShow> tvShows = new ArrayList<>();
+    private final List<TVShowEntity> tvShows = new ArrayList<TVShowEntity>();
 
     TVShowAdapter(Activity activity) {
         this.activity = activity;
     }
 
-    void setTvShows(List<TVShow> tvShows) {
+    void setTvShows(List<TVShowEntity> tvShows) {
         if (tvShows == null) return;
         this.tvShows.clear();
         this.tvShows.addAll(tvShows);
@@ -65,7 +65,7 @@ public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.TVShowHold
             ButterKnife.bind(this, itemView);
         }
 
-        void bindDataTVShows(TVShow tvShow) {
+        void bindDataTVShows(TVShowEntity tvShow) {
             tvNameTVShows.setText(tvShow.getName());
             tvOverviewTV.setText(tvShow.getOverview());
 //            tvGenreTVShows.setText(tvShow.getGenre());

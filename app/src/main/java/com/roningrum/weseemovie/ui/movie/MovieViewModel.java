@@ -1,21 +1,29 @@
 package com.roningrum.weseemovie.ui.movie;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
-import com.roningrum.weseemovie.data.locale.entity.Movie;
 import com.roningrum.weseemovie.data.source.MovieRepository;
+import com.roningrum.weseemovie.data.source.locale.entity.MovieEntity;
+import com.roningrum.weseemovie.vo.Resource;
 
 import java.util.List;
 
 public class MovieViewModel extends ViewModel {
-    private final MovieRepository movieRepository;
+    private MovieRepository movieRepository;
+
+    private MutableLiveData<String> mLogin = new MutableLiveData<>();
 
     public MovieViewModel(MovieRepository mMovieRepository) {
         this.movieRepository = mMovieRepository;
     }
 
-    LiveData<List<Movie>> getAllMovies() {
-        return movieRepository.getAllMovies();
+    LiveData<Resource<List<MovieEntity>>> movies = Transformations.switchMap(mLogin,
+            data -> movieRepository.getAllMovies());
+
+    void setUserName(String username) {
+        mLogin.setValue(username);
     }
 }

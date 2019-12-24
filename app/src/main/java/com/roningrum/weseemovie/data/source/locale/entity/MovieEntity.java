@@ -1,27 +1,43 @@
-package com.roningrum.weseemovie.data.locale.entity;
+package com.roningrum.weseemovie.data.source.locale.entity;
 
-import com.roningrum.weseemovie.data.remote.response.Constant;
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-public class Movie {
+@Entity(tableName = "Movies")
+public class MovieEntity {
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "id")
     private int id;
+
+    @ColumnInfo(name = "backdrop_path")
     private String backdrop_path;
+
+    @ColumnInfo(name = "overview")
     private String overview;
+
+    @ColumnInfo(name = "poster_path")
     private String poster_path;
+
+    @ColumnInfo(name = "title")
     private String title;
+
+    @ColumnInfo(name = "runtime")
     private int runtime;
+
+    @ColumnInfo(name = "release_date")
     private String release_date;
+
+    @ColumnInfo(name = "vote_average")
     private double vote_average;
 
-    public Movie(int id, String backdrop_path, String overview, String poster_path, String title, double vote_average) {
-        this.id = id;
-        this.backdrop_path = backdrop_path;
-        this.overview = overview;
-        this.poster_path = poster_path;
-        this.title = title;
-        this.vote_average = vote_average;
-    }
+    @ColumnInfo(name = "favorite")
+    private boolean favorite = false;
 
-    public Movie(int id, String backdrop_path, String overview, String poster_path, String title, int runtime, String release_date, double vote_average) {
+
+    public MovieEntity(int id, String backdrop_path, String overview, String poster_path, String title, int runtime, String release_date, double vote_average, Boolean favorite) {
         this.id = id;
         this.backdrop_path = backdrop_path;
         this.overview = overview;
@@ -30,6 +46,10 @@ public class Movie {
         this.runtime = runtime;
         this.release_date = release_date;
         this.vote_average = vote_average;
+        if (favorite != null) {
+            this.favorite = favorite;
+        }
+
     }
 
     public int getId() {
@@ -41,7 +61,7 @@ public class Movie {
     }
 
     public String getBackdrop_path() {
-        return Constant.IMAGE_URL + backdrop_path;
+        return backdrop_path;
     }
 
     public void setBackdrop_path(String backdrop_path) {
@@ -57,7 +77,7 @@ public class Movie {
     }
 
     public String getPoster_path() {
-        return Constant.IMAGE_URL + poster_path;
+        return poster_path;
     }
 
     public void setPoster_path(String poster_path) {
@@ -94,5 +114,13 @@ public class Movie {
 
     public void setVote_average(double vote_average) {
         this.vote_average = vote_average;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 }

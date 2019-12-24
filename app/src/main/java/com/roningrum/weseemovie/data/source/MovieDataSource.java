@@ -2,19 +2,24 @@ package com.roningrum.weseemovie.data.source;
 
 import androidx.lifecycle.LiveData;
 
-import com.roningrum.weseemovie.data.locale.entity.Movie;
-import com.roningrum.weseemovie.data.locale.entity.TVShow;
+import com.roningrum.weseemovie.data.source.locale.entity.MovieEntity;
+import com.roningrum.weseemovie.data.source.locale.entity.TVShowEntity;
+import com.roningrum.weseemovie.vo.Resource;
 
 import java.util.List;
 
 interface MovieDataSource {
 
-    LiveData<List<Movie>> getAllMovies();
+    LiveData<Resource<List<MovieEntity>>> getAllMovies();
 
-    LiveData<Movie> getMovieDetails(int movieId);
+    LiveData<Resource<MovieEntity>> getMovieDetails(int movieId);
 
-    LiveData<List<TVShow>> getAllTvs();
+    LiveData<Resource<List<TVShowEntity>>> getAllTvs();
 
-    LiveData<TVShow> getTvShowDetails(int tvId);
+    LiveData<Resource<TVShowEntity>> getTvShowDetails(int tvId);
+
+    void setMovieFavBookMark(MovieEntity movie, boolean state);
+
+    void setTvShowFavBookMark(TVShowEntity tvShowEntity, boolean state);
 
 }

@@ -1,28 +1,45 @@
-package com.roningrum.weseemovie.data.locale.entity;
+package com.roningrum.weseemovie.data.source.locale.entity;
 
-import com.roningrum.weseemovie.data.remote.response.Constant;
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-public class TVShow {
+import com.roningrum.weseemovie.data.source.remote.response.Constant;
+
+@Entity(tableName = "TvShows")
+public class TVShowEntity {
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "id")
     private int id;
+
+    @ColumnInfo(name = "name")
     private String name;
+
+    @ColumnInfo(name = "poster_path")
     private String poster_path;
+
+    @ColumnInfo(name = "backdrop_path")
     private String backdrop_path;
+
+    @ColumnInfo(name = "overview")
     private String overview;
+
+    @ColumnInfo(name = "first_air_date")
     private String first_air_date;
+
+    @ColumnInfo(name = "number_of_seasons")
     private String number_of_seasons;
+
+    @ColumnInfo(name = "vote_average")
     private double vote_average;
 
-    public TVShow(int id, String name, String poster_path, String backdrop_path, String overview, String first_air_date, double vote_average) {
-        this.id = id;
-        this.name = name;
-        this.poster_path = poster_path;
-        this.backdrop_path = backdrop_path;
-        this.overview = overview;
-        this.first_air_date = first_air_date;
-        this.vote_average = vote_average;
-    }
+    @ColumnInfo(name = "favorite")
+    private boolean favorite = false;
 
-    public TVShow(int id, String name, String poster_path, String backdrop_path, String overview, String first_air_date, String number_of_seasons, double vote_average) {
+
+    public TVShowEntity(int id, String name, String poster_path, String backdrop_path, String overview, String first_air_date, String number_of_seasons, double vote_average, Boolean favorite) {
         this.id = id;
         this.name = name;
         this.poster_path = poster_path;
@@ -31,6 +48,9 @@ public class TVShow {
         this.first_air_date = first_air_date;
         this.number_of_seasons = number_of_seasons;
         this.vote_average = vote_average;
+        if (favorite != null) {
+            this.favorite = favorite;
+        }
     }
 
     public int getId() {
@@ -95,5 +115,13 @@ public class TVShow {
 
     public void setVote_average(double vote_average) {
         this.vote_average = vote_average;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 }

@@ -1,7 +1,7 @@
 package com.roningrum.weseemovie.ui.utils;
 
-import com.roningrum.weseemovie.data.locale.entity.Movie;
-import com.roningrum.weseemovie.data.locale.entity.TVShow;
+import com.roningrum.weseemovie.model.Movie;
+import com.roningrum.weseemovie.model.TVShow;
 
 import java.util.ArrayList;
 
