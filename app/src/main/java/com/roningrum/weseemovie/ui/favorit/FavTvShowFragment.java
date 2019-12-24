@@ -12,10 +12,10 @@ import com.roningrum.weseemovie.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TvFavFragment extends Fragment {
+public class FavTvShowFragment extends Fragment {
 
 
-    public TvFavFragment() {
+    public FavTvShowFragment() {
         // Required empty public constructor
     }
 

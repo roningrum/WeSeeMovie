@@ -2,6 +2,7 @@ package com.roningrum.weseemovie.data.source.locale.room;
 
 import androidx.annotation.WorkerThread;
 import androidx.lifecycle.LiveData;
+import androidx.paging.DataSource;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -36,11 +37,13 @@ public interface WeSeeMovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long[] insertTvShows(List<TVShowEntity> tvShows);
 
-    @Query("SELECT * FROM Movies WHERE id = :movieId")
-    LiveData<List<MovieEntity>> getFavoriteMovies(int movieId);
+    @WorkerThread
+    @Query("SELECT * FROM Movies WHERE favorite = 1")
+    DataSource.Factory<Integer, MovieEntity> getFavoriteMovies();
 
-    @Query("SELECT * FROM TvShows WHERE id = :tvShowId")
-    LiveData<List<TVShowEntity>> getFavoriteTvShows(int tvShowId);
+    @WorkerThread
+    @Query("SELECT * FROM TvShows WHERE favorite = 1")
+    DataSource.Factory<Integer, TVShowEntity> getFavoriteTvShows();
 
     @Update
     int updateTvShow(TVShowEntity tvShowEntity);

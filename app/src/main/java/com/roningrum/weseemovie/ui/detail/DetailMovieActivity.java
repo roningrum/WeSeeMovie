@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.roningrum.weseemovie.R;
+import com.roningrum.weseemovie.data.source.remote.response.Constant;
 import com.roningrum.weseemovie.utils.DateHelper;
 import com.roningrum.weseemovie.utils.GlideApp;
 import com.roningrum.weseemovie.viewmodel.ViewModelFactory;
@@ -115,8 +116,8 @@ public class DetailMovieActivity extends AppCompatActivity {
                         tvReleaseDateMoviesDetail.setText(dateHelper.getReleaseDate(movieEntityResource.data.getRelease_date()));
                         tvSynopsisMoviesDetail.setText(movieEntityResource.data.getOverview());
 
-                        GlideApp.with(getApplicationContext()).load(movieEntityResource.data.getPoster_path()).into(imgPosterDetail);
-                        GlideApp.with(getApplicationContext()).load(movieEntityResource.data.getBackdrop_path()).into(imgBannerDetail);
+                        GlideApp.with(getApplicationContext()).load(Constant.IMAGE_URL + movieEntityResource.data.getPoster_path()).into(imgPosterDetail);
+                        GlideApp.with(getApplicationContext()).load(Constant.IMAGE_URL + movieEntityResource.data.getBackdrop_path()).into(imgBannerDetail);
 
                     }
                     break;

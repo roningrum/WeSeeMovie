@@ -5,8 +5,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.roningrum.weseemovie.data.source.remote.response.Constant;
-
 @Entity(tableName = "TvShows")
 public class TVShowEntity {
     @PrimaryKey
@@ -30,7 +28,7 @@ public class TVShowEntity {
     private String first_air_date;
 
     @ColumnInfo(name = "number_of_seasons")
-    private String number_of_seasons;
+    private int number_of_seasons;
 
     @ColumnInfo(name = "vote_average")
     private double vote_average;
@@ -38,8 +36,22 @@ public class TVShowEntity {
     @ColumnInfo(name = "favorite")
     private boolean favorite = false;
 
+//    @Ignore
+//    public TVShowEntity() {
+//    }
 
-    public TVShowEntity(int id, String name, String poster_path, String backdrop_path, String overview, String first_air_date, String number_of_seasons, double vote_average, Boolean favorite) {
+//    @Ignore
+//    public TVShowEntity(int id, String name, String poster_path, String backdrop_path, String overview, String first_air_date, double vote_average) {
+//        this.id = id;
+//        this.name = name;
+//        this.poster_path = poster_path;
+//        this.backdrop_path = backdrop_path;
+//        this.overview = overview;
+//        this.first_air_date = first_air_date;
+//        this.vote_average = vote_average;
+//    }
+
+    public TVShowEntity(int id, String name, String poster_path, String backdrop_path, String overview, String first_air_date, int number_of_seasons, double vote_average, Boolean favorite) {
         this.id = id;
         this.name = name;
         this.poster_path = poster_path;
@@ -70,7 +82,7 @@ public class TVShowEntity {
     }
 
     public String getPoster_path() {
-        return Constant.IMAGE_URL + poster_path;
+        return poster_path;
     }
 
     public void setPoster_path(String poster_path) {
@@ -78,7 +90,7 @@ public class TVShowEntity {
     }
 
     public String getBackdrop_path() {
-        return Constant.IMAGE_URL + backdrop_path;
+        return backdrop_path;
     }
 
     public void setBackdrop_path(String backdrop_path) {
@@ -101,11 +113,11 @@ public class TVShowEntity {
         this.first_air_date = first_air_date;
     }
 
-    public String getNumber_of_seasons() {
+    public int getNumber_of_seasons() {
         return number_of_seasons;
     }
 
-    public void setNumber_of_seasons(String number_of_seasons) {
+    public void setNumber_of_seasons(int number_of_seasons) {
         this.number_of_seasons = number_of_seasons;
     }
 

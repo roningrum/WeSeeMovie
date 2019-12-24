@@ -53,8 +53,8 @@ public class FavoriteFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         ViewPagerAdapter favViewPageAdapter = new ViewPagerAdapter(getChildFragmentManager());
-        favViewPageAdapter.addFragment(new MovieFavFragment(), getString(R.string.movie));
-        favViewPageAdapter.addFragment(new TvFavFragment(), getString(R.string.tv_series));
+        favViewPageAdapter.addFragment(new FavMovieFragment(), getString(R.string.movie));
+        favViewPageAdapter.addFragment(new FavTvShowFragment(), getString(R.string.tv_series));
 
         viewPager.setAdapter(favViewPageAdapter);
         tabLayout.setupWithViewPager(viewPager);

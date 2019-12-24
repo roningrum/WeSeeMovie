@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
 import com.roningrum.weseemovie.data.source.MovieRepository;
-import com.roningrum.weseemovie.model.Movie;
+import com.roningrum.weseemovie.data.source.locale.entity.MovieEntity;
 import com.roningrum.weseemovie.ui.utils.FakeMovieDataDummy;
+import com.roningrum.weseemovie.vo.Resource;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -22,23 +23,27 @@ public class DetailMovieViewModelTest {
 
     private DetailMovieViewModel viewModel;
     private final MovieRepository movieRepository = mock(MovieRepository.class);
-    private final Movie movieDummy = FakeMovieDataDummy.getMovieDetail();
-    private final int movieId = movieDummy.getId();
+    private final MovieEntity dummyMovieDetails = FakeMovieDataDummy.generateDummyMovieLocals().get(0);
+    private final int movieId = dummyMovieDetails.getId();
 
     @Before
     public void setUp() {
         viewModel = new DetailMovieViewModel(movieRepository);
         viewModel.setMovieId(movieId);
+        viewModel.setFavoriteMovie();
     }
 
     @Test
     public void getMovieDetail() {
-        MutableLiveData<Movie> movie = new MutableLiveData<>();
-        movie.setValue(movieDummy);
-        when(movieRepository.getMovieDetails(movieId)).thenReturn(movie);
-        Observer<Movie> observer = mock(Observer.class);
-        viewModel.getMovieDetail(movieId).observeForever(observer);
-        verify(observer).onChanged(movieDummy);
-    }
+        Resource<MovieEntity> resource = Resource.success(FakeMovieDataDummy.getMovieDetails(dummyMovieDetails, true));
+        MutableLiveData<Resource<MovieEntity>> movieDetails = new MutableLiveData<>();
+        movieDetails.setValue(resource);
 
+        when(movieRepository.getMovieDetails(movieId)).thenReturn(movieDetails);
+
+        Observer<Resource<MovieEntity>> observer = mock(Observer.class);
+        viewModel.detailMovies.observeForever(observer);
+        verify(observer).onChanged(resource);
+
+    }
 }

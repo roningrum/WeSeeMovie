@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
+import androidx.paging.PagedList;
 
 import com.roningrum.weseemovie.data.source.MovieRepository;
 import com.roningrum.weseemovie.data.source.locale.entity.MovieEntity;
@@ -23,7 +24,16 @@ public class MovieViewModel extends ViewModel {
     LiveData<Resource<List<MovieEntity>>> movies = Transformations.switchMap(mLogin,
             data -> movieRepository.getAllMovies());
 
+    public LiveData<Resource<PagedList<MovieEntity>>> getFavoritedMoviePaged() {
+        return movieRepository.getFavoritedMoviePaged();
+    }
+
     void setUserName(String username) {
         mLogin.setValue(username);
+    }
+
+    public void setFavorite(MovieEntity movieEntity) {
+        final boolean newState = !movieEntity.isFavorite();
+        movieRepository.setMovieFavBookMark(movieEntity, newState);
     }
 }

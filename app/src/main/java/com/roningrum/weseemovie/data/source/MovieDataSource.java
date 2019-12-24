@@ -1,6 +1,7 @@
 package com.roningrum.weseemovie.data.source;
 
 import androidx.lifecycle.LiveData;
+import androidx.paging.PagedList;
 
 import com.roningrum.weseemovie.data.source.locale.entity.MovieEntity;
 import com.roningrum.weseemovie.data.source.locale.entity.TVShowEntity;
@@ -12,9 +13,13 @@ interface MovieDataSource {
 
     LiveData<Resource<List<MovieEntity>>> getAllMovies();
 
+    LiveData<Resource<PagedList<MovieEntity>>> getFavoritedMoviePaged();
+
     LiveData<Resource<MovieEntity>> getMovieDetails(int movieId);
 
     LiveData<Resource<List<TVShowEntity>>> getAllTvs();
+
+    LiveData<Resource<PagedList<TVShowEntity>>> getFavoriteTvShowPaged();
 
     LiveData<Resource<TVShowEntity>> getTvShowDetails(int tvId);
 

@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.roningrum.weseemovie.R;
+import com.roningrum.weseemovie.data.source.remote.response.Constant;
 import com.roningrum.weseemovie.utils.DateHelper;
 import com.roningrum.weseemovie.utils.GlideApp;
 import com.roningrum.weseemovie.viewmodel.ViewModelFactory;
@@ -127,8 +128,8 @@ public class DetailTVShowActivity extends AppCompatActivity {
                         tvSynopsisTvShowDetail.setText(tvShowEntityResource.data.getOverview());
 
 
-                        GlideApp.with(getApplicationContext()).load(tvShowEntityResource.data.getPoster_path()).into(imgPosterDetail);
-                        GlideApp.with(getApplicationContext()).load(tvShowEntityResource.data.getBackdrop_path()).into(imgBannerDetail);
+                        GlideApp.with(getApplicationContext()).load(Constant.IMAGE_URL + tvShowEntityResource.data.getPoster_path()).into(imgPosterDetail);
+                        GlideApp.with(getApplicationContext()).load(Constant.IMAGE_URL + tvShowEntityResource.data.getBackdrop_path()).into(imgBannerDetail);
                     }
                     break;
                 case ERROR:

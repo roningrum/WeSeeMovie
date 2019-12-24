@@ -37,6 +37,17 @@ public class MovieEntity {
     private boolean favorite = false;
 
 
+    //    @Ignore
+//    public MovieEntity(int id, String backdrop_path, String overview, String poster_path, String title, double vote_average, Boolean favorite) {
+//        this.id = id;
+//        this.backdrop_path = backdrop_path;
+//        this.overview = overview;
+//        this.poster_path = poster_path;
+//        this.title = title;
+//        this.vote_average = vote_average;
+//        this.favorite = favorite;
+//    }
+//
     public MovieEntity(int id, String backdrop_path, String overview, String poster_path, String title, int runtime, String release_date, double vote_average, Boolean favorite) {
         this.id = id;
         this.backdrop_path = backdrop_path;

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.roningrum.weseemovie.R;
 import com.roningrum.weseemovie.data.source.locale.entity.MovieEntity;
+import com.roningrum.weseemovie.data.source.remote.response.Constant;
 import com.roningrum.weseemovie.ui.detail.DetailMovieActivity;
 import com.roningrum.weseemovie.utils.GlideApp;
 
@@ -73,7 +74,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         void bindDataMovies(MovieEntity movie) {
             tvNameMovieItem.setText(movie.getTitle());
             tvSummaryMovie.setText(movie.getOverview());
-            GlideApp.with(itemView.getContext()).load(movie.getPoster_path()).into(imgMovieItem);
+            GlideApp.with(itemView.getContext()).load(Constant.IMAGE_URL + movie.getPoster_path()).into(imgMovieItem);
             Log.d("Check ", "Poster " + movie.getPoster_path());
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(activity, DetailMovieActivity.class);

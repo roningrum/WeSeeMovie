@@ -1,6 +1,7 @@
 package com.roningrum.weseemovie.data.source.locale;
 
 import androidx.lifecycle.LiveData;
+import androidx.paging.DataSource;
 
 import com.roningrum.weseemovie.data.source.locale.entity.MovieEntity;
 import com.roningrum.weseemovie.data.source.locale.entity.TVShowEntity;
@@ -39,12 +40,12 @@ public class LocalRepository {
         return weSeeMovieDao.getDetailTvShow(id);
     }
 
-    public LiveData<List<MovieEntity>> getMoviesFavs(int movieId) {
-        return weSeeMovieDao.getFavoriteMovies(movieId);
+    public DataSource.Factory<Integer, MovieEntity> getMoviesFavs() {
+        return weSeeMovieDao.getFavoriteMovies();
     }
 
-    public LiveData<List<TVShowEntity>> getTvShowFavs(int tvShowId) {
-        return weSeeMovieDao.getFavoriteTvShows(tvShowId);
+    public DataSource.Factory<Integer, TVShowEntity> getTvShowFavs() {
+        return weSeeMovieDao.getFavoriteTvShows();
     }
 
     public void insertMovies(List<MovieEntity> movies) {

@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
 import com.roningrum.weseemovie.data.source.MovieRepository;
-import com.roningrum.weseemovie.model.TVShow;
+import com.roningrum.weseemovie.data.source.locale.entity.TVShowEntity;
 import com.roningrum.weseemovie.ui.utils.FakeMovieDataDummy;
+import com.roningrum.weseemovie.vo.Resource;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -21,23 +22,27 @@ public class DetailTVShowViewModelTest {
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
     private DetailTVShowViewModel viewModel;
     private final MovieRepository movieRepository = mock(MovieRepository.class);
-    private final TVShow tvShowDummy = FakeMovieDataDummy.getTvShowsDetail();
+    private final TVShowEntity tvShowDummy = FakeMovieDataDummy.generateDummyTVLocals().get(0);
     private final int tvshowId = tvShowDummy.getId();
 
     @Before
     public void setUp() {
         viewModel = new DetailTVShowViewModel(movieRepository);
+        viewModel.setTvId(tvshowId);
+        viewModel.setFavoriteTVShow();
     }
 
     @Test
     public void getTVShowDetail() {
-        MutableLiveData<TVShow> tvshow = new MutableLiveData<>();
-        tvshow.setValue(tvShowDummy);
-        when(movieRepository.getTvShowDetails(tvshowId)).thenReturn(tvshow);
+        Resource<TVShowEntity> resource = Resource.success(FakeMovieDataDummy.getTvShowDetails(tvShowDummy, true));
+        MutableLiveData<Resource<TVShowEntity>> tvShowDetails = new MutableLiveData<>();
+        tvShowDetails.setValue(resource);
 
-        Observer<TVShow> observer = mock(Observer.class);
-        viewModel.getTvShowDetail(tvshowId).observeForever(observer);
-        verify(observer).onChanged(tvShowDummy);
+        when(movieRepository.getTvShowDetails(tvshowId)).thenReturn(tvShowDetails);
+
+        Observer<Resource<TVShowEntity>> observer = mock(Observer.class);
+        viewModel.detailTvShows.observeForever(observer);
+        verify(observer).onChanged(resource);
     }
 
 }

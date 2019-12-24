@@ -51,7 +51,7 @@ public class FakeMovieDataDummy {
                 "/o7qi2v4uWQ8bZ1tW3KI0Ztn2epk.jpg",
                 "Set after the fall of the Empire and before the emergence of the First Order, we follow the travails of a lone gunfighter in the outer reaches of the galaxy far from the authority of the New Republic.",
                 "2019-11-12",
-                "1",
+                1,
                 7.7
         );
     }

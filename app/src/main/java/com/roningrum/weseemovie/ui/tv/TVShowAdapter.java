@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.roningrum.weseemovie.R;
 import com.roningrum.weseemovie.data.source.locale.entity.TVShowEntity;
+import com.roningrum.weseemovie.data.source.remote.response.Constant;
 import com.roningrum.weseemovie.ui.detail.DetailTVShowActivity;
 import com.roningrum.weseemovie.utils.GlideApp;
 
@@ -69,7 +70,7 @@ public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.TVShowHold
             tvNameTVShows.setText(tvShow.getName());
             tvOverviewTV.setText(tvShow.getOverview());
 //            tvGenreTVShows.setText(tvShow.getGenre());
-            GlideApp.with(itemView.getContext()).load(tvShow.getPoster_path()).into(imgTVShow);
+            GlideApp.with(itemView.getContext()).load(Constant.IMAGE_URL + tvShow.getPoster_path()).into(imgTVShow);
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(activity, DetailTVShowActivity.class);
                 intent.putExtra(DetailTVShowActivity.EXTRA_TV, tvShow.getId());

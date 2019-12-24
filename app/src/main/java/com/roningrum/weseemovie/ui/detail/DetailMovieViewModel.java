@@ -20,6 +20,7 @@ public class DetailMovieViewModel extends ViewModel {
 
     public LiveData<Resource<MovieEntity>> detailMovies = Transformations.switchMap(movieId,
             movieId -> movieRepository.getMovieDetails(movieId));
+
     public int getMovieId() {
         if (movieId.getValue() == null) return 0;
         return movieId.getValue();

@@ -2,6 +2,8 @@ package com.roningrum.weseemovie.data.source;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
+import androidx.paging.LivePagedListBuilder;
+import androidx.paging.PagedList;
 
 import com.roningrum.weseemovie.data.source.locale.LocalRepository;
 import com.roningrum.weseemovie.data.source.locale.entity.MovieEntity;
@@ -80,6 +82,32 @@ public class MovieRepository implements MovieDataSource {
     }
 
     @Override
+    public LiveData<Resource<PagedList<MovieEntity>>> getFavoritedMoviePaged() {
+        return new NetworkBoundResource<PagedList<MovieEntity>, List<Movie>>(appExecutors) {
+
+            @Override
+            protected LiveData<PagedList<MovieEntity>> loadFromDB() {
+                return new LivePagedListBuilder<>(localRepository.getMoviesFavs(),/* page size */ 20).build();
+            }
+
+            @Override
+            protected Boolean shouldFetch(PagedList<MovieEntity> data) {
+                return false;
+            }
+
+            @Override
+            protected LiveData<ApiResponse<List<Movie>>> createCall() {
+                return null;
+            }
+
+            @Override
+            protected void saveCallResult(List<Movie> data) {
+
+            }
+        }.asLiveData();
+    }
+
+    @Override
     public LiveData<Resource<MovieEntity>> getMovieDetails(int movieId) {
         return new NetworkBoundResource<MovieEntity, Movie>(appExecutors) {
             @Override
@@ -139,6 +167,32 @@ public class MovieRepository implements MovieDataSource {
                             null));
                 }
                 localRepository.inserTvShows(tvShowEntities);
+            }
+        }.asLiveData();
+    }
+
+    @Override
+    public LiveData<Resource<PagedList<TVShowEntity>>> getFavoriteTvShowPaged() {
+        return new NetworkBoundResource<PagedList<TVShowEntity>, List<TVShow>>(appExecutors) {
+
+            @Override
+            protected LiveData<PagedList<TVShowEntity>> loadFromDB() {
+                return new LivePagedListBuilder<>(localRepository.getTvShowFavs(), /* page size */ 20).build();
+            }
+
+            @Override
+            protected Boolean shouldFetch(PagedList<TVShowEntity> data) {
+                return false;
+            }
+
+            @Override
+            protected LiveData<ApiResponse<List<TVShow>>> createCall() {
+                return null;
+            }
+
+            @Override
+            protected void saveCallResult(List<TVShow> data) {
+
             }
         }.asLiveData();
     }

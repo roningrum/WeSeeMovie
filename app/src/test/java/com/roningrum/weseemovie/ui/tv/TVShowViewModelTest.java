@@ -5,14 +5,14 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
 import com.roningrum.weseemovie.data.source.MovieRepository;
-import com.roningrum.weseemovie.model.TVShow;
+import com.roningrum.weseemovie.data.source.locale.entity.TVShowEntity;
 import com.roningrum.weseemovie.ui.utils.FakeMovieDataDummy;
+import com.roningrum.weseemovie.vo.Resource;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.mock;
@@ -33,14 +33,17 @@ public class TVShowViewModelTest {
 
     @Test
     public void getTvShows() {
-        ArrayList<TVShow> dummyTvShows = FakeMovieDataDummy.generateDummyTVShow();
-        MutableLiveData<List<TVShow>> tvshows = new MutableLiveData<>();
-        tvshows.setValue(dummyTvShows);
-        when(movieRepository.getAllTvs()).thenReturn(tvshows);
+        Resource<List<TVShowEntity>> resource = Resource.success(FakeMovieDataDummy.generateDummyTVLocals());
+        MutableLiveData<Resource<List<TVShowEntity>>> dummyTvshows = new MutableLiveData<>();
+        dummyTvshows.setValue(resource);
 
-        Observer<List<TVShow>> observer = mock(Observer.class);
-        tvShowViewModel.getAllTvShows().observeForever(observer);
-        verify(observer).onChanged(dummyTvShows);
+        when(movieRepository.getAllTvs()).thenReturn(dummyTvshows);
+
+        Observer<Resource<List<TVShowEntity>>> observer = mock(Observer.class);
+        String USERNAME = "roningrum";
+        tvShowViewModel.setUserName(USERNAME);
+        tvShowViewModel.tvShows.observeForever(observer);
+        verify(observer).onChanged(resource);
 
     }
 
