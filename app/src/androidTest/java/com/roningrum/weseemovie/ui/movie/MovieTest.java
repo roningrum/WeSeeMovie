@@ -38,6 +38,17 @@ public class MovieTest {
         onView(withId(R.id.rv_movie)).check(matches(isDisplayed()));
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         onView(withId(R.id.tv_name_movie_detail)).check(matches(isDisplayed()));
+        onView(withId(R.id.action_add_fav)).perform(click());
         Espresso.pressBack();
+    }
+
+    @Test
+    public void toMoviesFavorite() {
+        onView(withId(R.id.nav_fav_menu)).check(matches(isDisplayed()));
+        onView(withId(R.id.nav_fav_menu)).perform(click());
+        onView(withId(R.id.rv_movies_favs)).check(matches(isDisplayed()));
+        onView(withId(R.id.rv_movies_favs)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        onView(withId(R.id.action_add_fav)).perform(click());
+
     }
 }
