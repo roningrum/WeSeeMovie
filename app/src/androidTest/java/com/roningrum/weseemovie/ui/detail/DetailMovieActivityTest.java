@@ -18,6 +18,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -52,6 +53,7 @@ public class DetailMovieActivityTest {
         onView(withId(R.id.tv_name_movie_detail)).check(matches(withText(dummyMovie.getTitle())));
         onView(withId(R.id.tv_sinopsis_detail)).check(matches(isDisplayed()));
         onView(withId(R.id.tv_sinopsis_detail)).check(matches(withText(dummyMovie.getOverview())));
+        onView(withId(R.id.action_add_fav)).perform(click());
     }
 
 }

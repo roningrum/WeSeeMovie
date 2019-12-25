@@ -59,7 +59,7 @@ public class TVShowTest {
         onView(withId(R.id.rv_tvshows_favs)).check(matches(isDisplayed()));
         onView(withId(R.id.rv_tvshows_favs)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         onView(withId(R.id.action_add_fav)).perform(click());
-
+        Espresso.pressBack();
     }
 
 }
