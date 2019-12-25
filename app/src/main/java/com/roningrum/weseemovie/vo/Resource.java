@@ -15,7 +15,7 @@ public class Resource<T> {
     public final Status status;
 
     @Nullable
-    public final String message;
+    private final String message;
 
     @Nullable
     public final T data;

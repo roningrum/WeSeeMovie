@@ -20,7 +20,7 @@ public class ApiResponse<T> {
     @Nullable
     public final T body;
 
-    public ApiResponse(@NonNull StatusResponse status, @Nullable T body, @Nullable String message) {
+    ApiResponse(@NonNull StatusResponse status, @Nullable T body, @Nullable String message) {
         this.status = status;
         this.message = message;
         this.body = body;

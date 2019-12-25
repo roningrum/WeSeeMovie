@@ -17,7 +17,7 @@ public class DetailTVShowViewModel extends ViewModel {
         this.movieRepository = mMovieRepository;
     }
 
-    public LiveData<Resource<TVShowEntity>> detailTvShows = Transformations.switchMap(tvId,
+    LiveData<Resource<TVShowEntity>> detailTvShows = Transformations.switchMap(tvId,
             tvId -> movieRepository.getTvShowDetails(tvId));
 
     public int getTvId() {
@@ -25,11 +25,11 @@ public class DetailTVShowViewModel extends ViewModel {
         return tvId.getValue();
     }
 
-    public void setTvId(int tvId) {
+    void setTvId(int tvId) {
         this.tvId.setValue(tvId);
     }
 
-    public void setFavoriteTVShow() {
+    void setFavoriteTVShow() {
         if (detailTvShows.getValue() != null) {
             TVShowEntity tvShowEntity = detailTvShows.getValue().data;
 

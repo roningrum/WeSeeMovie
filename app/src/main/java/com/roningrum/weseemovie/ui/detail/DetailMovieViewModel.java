@@ -18,7 +18,7 @@ public class DetailMovieViewModel extends ViewModel {
         this.movieRepository = mMovieRepository;
     }
 
-    public LiveData<Resource<MovieEntity>> detailMovies = Transformations.switchMap(movieId,
+    LiveData<Resource<MovieEntity>> detailMovies = Transformations.switchMap(movieId,
             movieId -> movieRepository.getMovieDetails(movieId));
 
     public int getMovieId() {
@@ -30,7 +30,7 @@ public class DetailMovieViewModel extends ViewModel {
         this.movieId.setValue(movieId);
     }
 
-    public void setFavoriteMovie() {
+    void setFavoriteMovie() {
         if (detailMovies.getValue() != null) {
             MovieEntity movieEntity = detailMovies.getValue().data;
 

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">WeSeeMovie</string>
     <string name="movie">Movie</string>
     <string name="tv_series">TV Series</string>
@@ -6,15 +6,10 @@
     <string name="movie_banner">movie_banner</string>
     <string name="synopsis">Synopsis</string>
     <string name="poster">poster</string>
-    <string name="duration">Duration</string>
     <string name="rate">rate</string>
-    <string name="minute">minute</string>
-    <string name="season">season</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="favorite_menu">Favorite</string>
-    <string name="message_ok">Ok</string>
+    <string name="message_ok" tools:ignore="ButtonCase">Ok</string>
     <string name="message_undo">Are sure to cancel this?</string>
 
 </resources>
