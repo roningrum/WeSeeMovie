@@ -27,8 +27,8 @@ public class TVShowEntity {
     @ColumnInfo(name = "first_air_date")
     private String first_air_date;
 
-    @ColumnInfo(name = "number_of_seasons")
-    private int number_of_seasons;
+//    @ColumnInfo(name = "number_of_seasons")
+//    private int number_of_seasons;
 
     @ColumnInfo(name = "vote_average")
     private double vote_average;
@@ -36,29 +36,14 @@ public class TVShowEntity {
     @ColumnInfo(name = "favorite")
     private boolean favorite = false;
 
-//    @Ignore
-//    public TVShowEntity() {
-//    }
 
-//    @Ignore
-//    public TVShowEntity(int id, String name, String poster_path, String backdrop_path, String overview, String first_air_date, double vote_average) {
-//        this.id = id;
-//        this.name = name;
-//        this.poster_path = poster_path;
-//        this.backdrop_path = backdrop_path;
-//        this.overview = overview;
-//        this.first_air_date = first_air_date;
-//        this.vote_average = vote_average;
-//    }
-
-    public TVShowEntity(int id, String name, String poster_path, String backdrop_path, String overview, String first_air_date, int number_of_seasons, double vote_average, Boolean favorite) {
+    public TVShowEntity(int id, String name, String poster_path, String backdrop_path, String overview, String first_air_date, double vote_average, Boolean favorite) {
         this.id = id;
         this.name = name;
         this.poster_path = poster_path;
         this.backdrop_path = backdrop_path;
         this.overview = overview;
         this.first_air_date = first_air_date;
-        this.number_of_seasons = number_of_seasons;
         this.vote_average = vote_average;
         if (favorite != null) {
             this.favorite = favorite;
@@ -111,14 +96,6 @@ public class TVShowEntity {
 
     public void setFirst_air_date(String first_air_date) {
         this.first_air_date = first_air_date;
-    }
-
-    public int getNumber_of_seasons() {
-        return number_of_seasons;
-    }
-
-    public void setNumber_of_seasons(int number_of_seasons) {
-        this.number_of_seasons = number_of_seasons;
     }
 
     public double getVote_average() {

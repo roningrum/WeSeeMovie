@@ -47,31 +47,6 @@
         tools:text="22 November" />
 
     <TextView
-        android:id="@+id/tv_season"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/open_sans"
-        android:text="@string/season"
-        android:textColor="@color/colorText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_release_time" />
-
-    <TextView
-        android:id="@+id/tv_number_tv_season"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/open_sans_bold"
-        android:textColor="@color/colorText"
-        app:layout_constraintEnd_toStartOf="@+id/img_tv_poster_detail"
-        app:layout_constraintHorizontal_bias="0.231"
-        app:layout_constraintStart_toEndOf="@+id/tv_season"
-        app:layout_constraintTop_toBottomOf="@+id/tv_release_tv_time_detail"
-        tools:text="1 Season" />
-
-    <TextView
         android:id="@+id/tv_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -81,7 +56,7 @@
         android:text="@string/rate"
         android:textColor="@color/colorText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_season" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_release_time" />
 
     <TextView
         android:id="@+id/tv_rate_tv"
@@ -97,7 +72,7 @@
         app:layout_constraintEnd_toStartOf="@+id/img_tv_poster_detail"
         app:layout_constraintHorizontal_bias="0.242"
         app:layout_constraintStart_toEndOf="@+id/tv_rate"
-        app:layout_constraintTop_toBottomOf="@+id/tv_number_tv_season"
+        app:layout_constraintTop_toBottomOf="@+id/tv_release_tv_time_detail"
         tools:text="7.8" />
 
 

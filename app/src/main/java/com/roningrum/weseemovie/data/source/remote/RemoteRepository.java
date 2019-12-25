@@ -112,22 +112,6 @@ public class RemoteRepository {
         return resultMovieDetail;
     }
 
-//    public void getMovieDetail(int movieId, LoadMovieDetailCallback loadMovieDetailCallback) {
-//        EspressoIdlingResource.increment();
-//        Call<Movie> movieCall = apiService.getMovieDetail(movieId, Constant.language);
-//        movieCall.enqueue(new Callback<Movie>() {
-//            @Override
-//            public void onResponse(@NonNull Call<Movie> call, @NonNull Response<Movie> response) {
-//                loadMovieDetailCallback.onMovieDetailReceive(response.body());
-//                EspressoIdlingResource.decrement();
-//            }
-//
-//            @Override
-//            public void onFailure(@NonNull Call<Movie> call, @NonNull Throwable t) {
-//                loadMovieDetailCallback.onDataNotAvailable(t.getMessage());
-//            }
-//        });
-//    }
 
     public LiveData<ApiResponse<TVShow>> getTvShowDetails(int tvId) {
         EspressoIdlingResource.increment();
@@ -153,21 +137,5 @@ public class RemoteRepository {
         }, SERVICE_LATENCY_IN_MILLIS);
         return resultTvShowDetails;
     }
-
-//    public void getTvShowDetail(int tvId, LoadTvShowDetailCallback loadTvShowDetailCallback) {
-//        EspressoIdlingResource.increment();
-//        Call<TVShow> tvShowCall = apiService.getTvShowDetail(tvId, Constant.language);
-//        tvShowCall.enqueue(new Callback<TVShow>() {
-//            @Override
-//            public void onResponse(@NonNull Call<TVShow> call, @NonNull Response<TVShow> response) {
-//                loadTvShowDetailCallback.onTvShowDetailReceive(response.body());
-//                EspressoIdlingResource.decrement();
-//            }
-//
-//            @Override
-//            public void onFailure(@NonNull Call<TVShow> call, @NonNull Throwable t) {
-//                loadTvShowDetailCallback.onDataNotAvailable(t.getMessage());
-//            }
-//        });
 }
 

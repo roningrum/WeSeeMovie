@@ -36,8 +36,7 @@ public class DetailMovieActivity extends AppCompatActivity {
     TextView tvNameMoviesDetail;
     @BindView(R.id.tv_rate_movie)
     TextView tvRateMovie;
-    @BindView(R.id.tv_duration_movie_item)
-    TextView tvDurationMoviesDetail;
+
     @BindView(R.id.tv_release_time_detail)
     TextView tvReleaseDateMoviesDetail;
     @BindView(R.id.tv_sinopsis_detail)
@@ -109,8 +108,6 @@ public class DetailMovieActivity extends AppCompatActivity {
                             }
                         });
                         tvNameMoviesDetail.setText(movieEntityResource.data.getTitle());
-                        String duration = String.valueOf(movieEntityResource.data.getRuntime());
-                        tvDurationMoviesDetail.setText(duration + " " + getString(R.string.minute));
                         tvRateMovie.setText(String.valueOf(movieEntityResource.data.getVote_average()));
                         DateHelper dateHelper = new DateHelper();
                         tvReleaseDateMoviesDetail.setText(dateHelper.getReleaseDate(movieEntityResource.data.getRelease_date()));

@@ -24,9 +24,6 @@ public class MovieEntity {
     @ColumnInfo(name = "title")
     private String title;
 
-    @ColumnInfo(name = "runtime")
-    private int runtime;
-
     @ColumnInfo(name = "release_date")
     private String release_date;
 
@@ -37,24 +34,12 @@ public class MovieEntity {
     private boolean favorite = false;
 
 
-    //    @Ignore
-//    public MovieEntity(int id, String backdrop_path, String overview, String poster_path, String title, double vote_average, Boolean favorite) {
-//        this.id = id;
-//        this.backdrop_path = backdrop_path;
-//        this.overview = overview;
-//        this.poster_path = poster_path;
-//        this.title = title;
-//        this.vote_average = vote_average;
-//        this.favorite = favorite;
-//    }
-//
-    public MovieEntity(int id, String backdrop_path, String overview, String poster_path, String title, int runtime, String release_date, double vote_average, Boolean favorite) {
+    public MovieEntity(int id, String backdrop_path, String overview, String poster_path, String title, String release_date, double vote_average, Boolean favorite) {
         this.id = id;
         this.backdrop_path = backdrop_path;
         this.overview = overview;
         this.poster_path = poster_path;
         this.title = title;
-        this.runtime = runtime;
         this.release_date = release_date;
         this.vote_average = vote_average;
         if (favorite != null) {
@@ -101,14 +86,6 @@ public class MovieEntity {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public int getRuntime() {
-        return runtime;
-    }
-
-    public void setRuntime(int runtime) {
-        this.runtime = runtime;
     }
 
     public String getRelease_date() {

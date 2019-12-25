@@ -70,7 +70,6 @@ public class FakeMovieRepository implements MovieDataSource {
                             movie.getOverview(),
                             movie.getPoster_path(),
                             movie.getTitle(),
-                            movie.getRuntime(),
                             movie.getRelease_date(),
                             movie.getVote_average(),
                             null));
@@ -161,7 +160,6 @@ public class FakeMovieRepository implements MovieDataSource {
                             tvShow.getBackdrop_path(),
                             tvShow.getOverview(),
                             tvShow.getFirst_air_date(),
-                            tvShow.getNumber_of_seasons(),
                             tvShow.getVote_average(),
                             null));
                 }

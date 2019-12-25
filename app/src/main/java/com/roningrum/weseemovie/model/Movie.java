@@ -6,29 +6,18 @@ public class Movie {
     private String overview;
     private String poster_path;
     private String title;
-    private int runtime;
     private String release_date;
     private double vote_average;
 
     public Movie() {
     }
 
-    public Movie(int id, String backdrop_path, String overview, String poster_path, String title, double vote_average) {
+    public Movie(int id, String backdrop_path, String overview, String poster_path, String title, String release_date, double vote_average) {
         this.id = id;
         this.backdrop_path = backdrop_path;
         this.overview = overview;
         this.poster_path = poster_path;
         this.title = title;
-        this.vote_average = vote_average;
-    }
-
-    public Movie(int id, String backdrop_path, String overview, String poster_path, String title, int runtime, String release_date, double vote_average) {
-        this.id = id;
-        this.backdrop_path = backdrop_path;
-        this.overview = overview;
-        this.poster_path = poster_path;
-        this.title = title;
-        this.runtime = runtime;
         this.release_date = release_date;
         this.vote_average = vote_average;
     }
@@ -71,14 +60,6 @@ public class Movie {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public int getRuntime() {
-        return runtime;
-    }
-
-    public void setRuntime(int runtime) {
-        this.runtime = runtime;
     }
 
     public String getRelease_date() {

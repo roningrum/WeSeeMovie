@@ -38,8 +38,6 @@ public class DetailTVShowActivity extends AppCompatActivity {
     @BindView(R.id.tv_release_tv_time_detail)
     TextView tvReleaseDateTV;
 
-    @BindView(R.id.tv_number_tv_season)
-    TextView tvNumberSeason;
     @BindView(R.id.tv_sinopsis_detail)
     TextView tvSynopsisTvShowDetail;
 
@@ -122,7 +120,6 @@ public class DetailTVShowActivity extends AppCompatActivity {
                         });
 
                         tvNameTvShowDetail.setText(tvShowEntityResource.data.getName());
-                        tvNumberSeason.setText(tvShowEntityResource.data.getNumber_of_seasons() + " " + getString(R.string.season));
                         tvReleaseDateTV.setText(new DateHelper().getReleaseDate(tvShowEntityResource.data.getFirst_air_date()));
                         tvRateTv.setText(String.valueOf(tvShowEntityResource.data.getVote_average()));
                         tvSynopsisTvShowDetail.setText(tvShowEntityResource.data.getOverview());

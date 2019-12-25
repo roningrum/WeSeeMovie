@@ -7,11 +7,7 @@ public class TVShow {
     private String backdrop_path;
     private String overview;
     private String first_air_date;
-    private int number_of_seasons;
     private double vote_average;
-
-    public TVShow() {
-    }
 
     public TVShow(int id, String name, String poster_path, String backdrop_path, String overview, String first_air_date, double vote_average) {
         this.id = id;
@@ -20,17 +16,6 @@ public class TVShow {
         this.backdrop_path = backdrop_path;
         this.overview = overview;
         this.first_air_date = first_air_date;
-        this.vote_average = vote_average;
-    }
-
-    public TVShow(int id, String name, String poster_path, String backdrop_path, String overview, String first_air_date, int number_of_seasons, double vote_average) {
-        this.id = id;
-        this.name = name;
-        this.poster_path = poster_path;
-        this.backdrop_path = backdrop_path;
-        this.overview = overview;
-        this.first_air_date = first_air_date;
-        this.number_of_seasons = number_of_seasons;
         this.vote_average = vote_average;
     }
 
@@ -80,14 +65,6 @@ public class TVShow {
 
     public void setFirst_air_date(String first_air_date) {
         this.first_air_date = first_air_date;
-    }
-
-    public int getNumber_of_seasons() {
-        return number_of_seasons;
-    }
-
-    public void setNumber_of_seasons(int number_of_seasons) {
-        this.number_of_seasons = number_of_seasons;
     }
 
     public double getVote_average() {
