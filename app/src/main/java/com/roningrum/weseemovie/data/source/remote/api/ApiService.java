@@ -19,10 +19,10 @@ public interface ApiService {
     @GET("discover/tv?api_key=" + BuildConfig.API_KEY)
     Call<TvResponse> getTVList(@Query("language") String language);
 
-    @GET("movie/{movie_id}?api_key=" + BuildConfig.API_KEY)
-    Call<Movie> getMovieDetail(@Path("movie_id") int Id, @Query("language") String language);
+    @GET("movie/{movieId}?api_key=" + BuildConfig.API_KEY)
+    Call<Movie> getMovieDetail(@Path("movieId") int Id, @Query("language") String language);
 
-    @GET("tv/{tv_id}?api_key=" + BuildConfig.API_KEY)
-    Call<TVShow> getTvShowDetail(@Path("tv_id") int Id, @Query("language") String language);
+    @GET("tv/{tvId}?api_key=" + BuildConfig.API_KEY)
+    Call<TVShow> getTvShowDetail(@Path("tvId") int Id, @Query("language") String language);
 
 }
