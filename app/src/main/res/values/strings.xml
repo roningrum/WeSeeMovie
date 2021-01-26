@@ -1,7 +1,15 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">WeSeeMovie</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="movie">Movie</string>
+    <string name="tv_series">TV Series</string>
+    <string name="release">release</string>
+    <string name="movie_banner">movie_banner</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="poster">poster</string>
+    <string name="rate">rate</string>
+
+    <string name="favorite_menu">Favorite</string>
+    <string name="message_ok" tools:ignore="ButtonCase">Ok</string>
+    <string name="message_undo">Are sure to cancel this?</string>
 
 </resources>
